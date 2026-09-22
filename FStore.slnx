@@ -1,0 +1,21 @@
+<Solution>
+  <Folder Name="/src/" />
+  <Folder Name="/src/BuildingBLocks/">
+    <Project Path="src/BuildingBLocks/FStore.Common/FStore.Common.csproj" />
+    <Project Path="src/BuildingBLocks/FStore.EventBus/FStore.EventBus.csproj" />
+  </Folder>
+  <Folder Name="/src/Gateways/">
+    <Project Path="src/Gateways/FStore.ApiGateway/FStore.ApiGateway.csproj" />
+  </Folder>
+  <Folder Name="/src/Services/" />
+  <Folder Name="/src/Services/Catalog/">
+    <Project Path="src/Services/Catalog/FStore.Catalog.Api/FStore.Catalog.Api.csproj" />
+    <Project Path="src/Services/Catalog/FStore.Catalog.Application/FStore.Catalog.Application.csproj" />
+    <Project Path="src/Services/Catalog/FStore.Catalog.Domain/FStore.Catalog.Domain.csproj" />
+    <Project Path="src/Services/Catalog/FStore.Catalog.Infrastructure/FStore.Catalog.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/FStore.Catalog.IntegrationTests/FStore.Catalog.IntegrationTests.csproj" />
+    <Project Path="tests/FStore.Catalog.UnitTests/FStore.Catalog.UnitTests.csproj" />
+  </Folder>
+</Solution>

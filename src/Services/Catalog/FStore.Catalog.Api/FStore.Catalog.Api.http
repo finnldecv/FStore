@@ -1,0 +1,6 @@
+@FStore.Catalog.Api_HostAddress = http://localhost:5090
+
+GET {{FStore.Catalog.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
