@@ -1960,6 +1960,7 @@
         "framework": ".NETCoreApp,Version=v10.0",
         "dependencies": {
           "FStore.Catalog.Domain": "1.0.0",
+          "FStore.Catalog.Infrastructure": "1.0.0",
           "FStore.EventBus": "1.0.0",
           "FluentValidation.DependencyInjectionExtensions": "12.1.1",
           "MediatR": "14.2.0"
@@ -4642,8 +4643,8 @@
     },
     "FStore.EventBus/1.0.0": {
       "type": "project",
-      "path": "../../src/BuildingBlocks/FStore.EventBus/FStore.EventBus.csproj",
-      "msbuildProject": "../../src/BuildingBlocks/FStore.EventBus/FStore.EventBus.csproj"
+      "path": "../../src/BuildingBLocks/FStore.EventBus/FStore.EventBus.csproj",
+      "msbuildProject": "../../src/BuildingBLocks/FStore.EventBus/FStore.EventBus.csproj"
     }
   },
   "projectFileDependencyGroups": {

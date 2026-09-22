@@ -1163,6 +1163,7 @@
         "framework": ".NETCoreApp,Version=v10.0",
         "dependencies": {
           "FStore.Catalog.Domain": "1.0.0",
+          "FStore.Catalog.Infrastructure": "1.0.0",
           "FStore.EventBus": "1.0.0",
           "FluentValidation.DependencyInjectionExtensions": "12.1.1",
           "MediatR": "14.2.0"
@@ -3383,8 +3384,8 @@
     },
     "FStore.EventBus/1.0.0": {
       "type": "project",
-      "path": "../../../BuildingBlocks/FStore.EventBus/FStore.EventBus.csproj",
-      "msbuildProject": "../../../BuildingBlocks/FStore.EventBus/FStore.EventBus.csproj"
+      "path": "../../../BuildingBLocks/FStore.EventBus/FStore.EventBus.csproj",
+      "msbuildProject": "../../../BuildingBLocks/FStore.EventBus/FStore.EventBus.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -3433,8 +3434,8 @@
             "D:\\Code\\FStore\\src\\BuildingBLocks\\FStore.Common\\FStore.Common.csproj": {
               "projectPath": "D:\\Code\\FStore\\src\\BuildingBLocks\\FStore.Common\\FStore.Common.csproj"
             },
-            "D:\\Code\\FStore\\src\\BuildingBlocks\\FStore.EventBus\\FStore.EventBus.csproj": {
-              "projectPath": "D:\\Code\\FStore\\src\\BuildingBlocks\\FStore.EventBus\\FStore.EventBus.csproj"
+            "D:\\Code\\FStore\\src\\BuildingBLocks\\FStore.EventBus\\FStore.EventBus.csproj": {
+              "projectPath": "D:\\Code\\FStore\\src\\BuildingBLocks\\FStore.EventBus\\FStore.EventBus.csproj"
             },
             "D:\\Code\\FStore\\src\\Services\\Catalog\\FStore.Catalog.Application\\FStore.Catalog.Application.csproj": {
               "projectPath": "D:\\Code\\FStore\\src\\Services\\Catalog\\FStore.Catalog.Application\\FStore.Catalog.Application.csproj"

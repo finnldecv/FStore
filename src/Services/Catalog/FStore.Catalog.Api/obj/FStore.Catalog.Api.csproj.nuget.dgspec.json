@@ -486,14 +486,14 @@
         }
       }
     },
-    "D:\\Code\\FStore\\src\\BuildingBlocks\\FStore.EventBus\\FStore.EventBus.csproj": {
+    "D:\\Code\\FStore\\src\\BuildingBLocks\\FStore.EventBus\\FStore.EventBus.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Code\\FStore\\src\\BuildingBlocks\\FStore.EventBus\\FStore.EventBus.csproj",
+        "projectUniqueName": "D:\\Code\\FStore\\src\\BuildingBLocks\\FStore.EventBus\\FStore.EventBus.csproj",
         "projectName": "FStore.EventBus",
-        "projectPath": "D:\\Code\\FStore\\src\\BuildingBlocks\\FStore.EventBus\\FStore.EventBus.csproj",
+        "projectPath": "D:\\Code\\FStore\\src\\BuildingBLocks\\FStore.EventBus\\FStore.EventBus.csproj",
         "packagesPath": "C:\\Users\\lamnh\\.nuget\\packages\\",
-        "outputPath": "D:\\Code\\FStore\\src\\BuildingBlocks\\FStore.EventBus\\obj\\",
+        "outputPath": "D:\\Code\\FStore\\src\\BuildingBLocks\\FStore.EventBus\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -856,8 +856,8 @@
               "D:\\Code\\FStore\\src\\BuildingBLocks\\FStore.Common\\FStore.Common.csproj": {
                 "projectPath": "D:\\Code\\FStore\\src\\BuildingBLocks\\FStore.Common\\FStore.Common.csproj"
               },
-              "D:\\Code\\FStore\\src\\BuildingBlocks\\FStore.EventBus\\FStore.EventBus.csproj": {
-                "projectPath": "D:\\Code\\FStore\\src\\BuildingBlocks\\FStore.EventBus\\FStore.EventBus.csproj"
+              "D:\\Code\\FStore\\src\\BuildingBLocks\\FStore.EventBus\\FStore.EventBus.csproj": {
+                "projectPath": "D:\\Code\\FStore\\src\\BuildingBLocks\\FStore.EventBus\\FStore.EventBus.csproj"
               },
               "D:\\Code\\FStore\\src\\Services\\Catalog\\FStore.Catalog.Application\\FStore.Catalog.Application.csproj": {
                 "projectPath": "D:\\Code\\FStore\\src\\Services\\Catalog\\FStore.Catalog.Application\\FStore.Catalog.Application.csproj"
@@ -1364,11 +1364,14 @@
           "net10.0": {
             "targetAlias": "net10.0",
             "projectReferences": {
-              "D:\\Code\\FStore\\src\\BuildingBlocks\\FStore.EventBus\\FStore.EventBus.csproj": {
-                "projectPath": "D:\\Code\\FStore\\src\\BuildingBlocks\\FStore.EventBus\\FStore.EventBus.csproj"
+              "D:\\Code\\FStore\\src\\BuildingBLocks\\FStore.EventBus\\FStore.EventBus.csproj": {
+                "projectPath": "D:\\Code\\FStore\\src\\BuildingBLocks\\FStore.EventBus\\FStore.EventBus.csproj"
               },
               "D:\\Code\\FStore\\src\\Services\\Catalog\\FStore.Catalog.Domain\\FStore.Catalog.Domain.csproj": {
                 "projectPath": "D:\\Code\\FStore\\src\\Services\\Catalog\\FStore.Catalog.Domain\\FStore.Catalog.Domain.csproj"
+              },
+              "D:\\Code\\FStore\\src\\Services\\Catalog\\FStore.Catalog.Infrastructure\\FStore.Catalog.Infrastructure.csproj": {
+                "projectPath": "D:\\Code\\FStore\\src\\Services\\Catalog\\FStore.Catalog.Infrastructure\\FStore.Catalog.Infrastructure.csproj"
               }
             }
           }

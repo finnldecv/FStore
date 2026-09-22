@@ -3,6 +3,7 @@
   <ItemGroup>
     <ProjectReference Include="..\FStore.Catalog.Domain\FStore.Catalog.Domain.csproj" />
     <ProjectReference Include="..\..\..\BuildingBlocks\FStore.EventBus\FStore.EventBus.csproj" />
+    <ProjectReference Include="..\FStore.Catalog.Infrastructure\FStore.Catalog.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>
