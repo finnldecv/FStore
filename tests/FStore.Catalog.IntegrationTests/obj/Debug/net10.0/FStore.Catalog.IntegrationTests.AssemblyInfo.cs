@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FStore.Catalog.IntegrationTests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5c3e1c2a699b5926174e12f87eda5498154177ff")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ac399cdd5dac343b87c0006270fe4a0c159b187f")]
 [assembly: System.Reflection.AssemblyProductAttribute("FStore.Catalog.IntegrationTests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FStore.Catalog.IntegrationTests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
