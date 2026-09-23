@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FStore.Catalog.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1c5ab6c3f3c25ae40f7a800e444ffd28ef646a6a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+de55fe4df4d0615e6e519c668adc23ca6df540a5")]
 [assembly: System.Reflection.AssemblyProductAttribute("FStore.Catalog.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FStore.Catalog.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
