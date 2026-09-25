@@ -7,5 +7,6 @@ public record ProductDto(
   decimal Price,
   string Currency,
   int StockQuantity,
-  Guid CategoryId
+  Guid CategoryId,
+  string CategoryName
 );
