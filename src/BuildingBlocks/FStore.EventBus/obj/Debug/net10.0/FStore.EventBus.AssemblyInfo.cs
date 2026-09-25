@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FStore.EventBus")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ac399cdd5dac343b87c0006270fe4a0c159b187f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+78ad9209a264475f70d6990969117c45481c24a8")]
 [assembly: System.Reflection.AssemblyProductAttribute("FStore.EventBus")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FStore.EventBus")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

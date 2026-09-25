@@ -1,0 +1,8 @@
+{
+  "FStore.Catalog.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "D:\\Code\\FStore\\src\\Services\\Catalog\\FStore.Catalog.Api",
+  "FStore.Catalog.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "D:\\Code\\FStore\\src\\Services\\Catalog\\FStore.Catalog.Application",
+  "FStore.Catalog.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "D:\\Code\\FStore\\src\\Services\\Catalog\\FStore.Catalog.Domain",
+  "FStore.Catalog.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "D:\\Code\\FStore\\src\\Services\\Catalog\\FStore.Catalog.Infrastructure",
+  "FStore.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "D:\\Code\\FStore\\src\\BuildingBLocks\\FStore.Common",
+  "FStore.EventBus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "D:\\Code\\FStore\\src\\BuildingBLocks\\FStore.EventBus"
+}
