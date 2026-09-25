@@ -39,7 +39,7 @@ public class CategoriesController : ControllerBase
     return CreatedAtAction(nameof(GetById), new { id }, id);
   }
 
-  [HttpPost("{id:guid}")]
+  [HttpPut("{id:guid}")]
   public async Task<IActionResult> Update(Guid id, [FromBody] UpdateCategoryCommand command)
   {
     if (id != command.Id) return BadRequest("Id mismatch");
