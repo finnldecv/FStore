@@ -22,7 +22,8 @@ public class CategoriesController : ControllerBase
   [HttpGet]
   public async Task<IActionResult> GetAll()
   {
-    return Ok(_mediator.Send(new GetCategoriesQuery()));
+    var result =await _mediator.Send(new GetCategoriesQuery());
+    return Ok(result);
   }
 
   [HttpGet("{id:guid}")]
