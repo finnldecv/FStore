@@ -9,3 +9,4 @@ D:\Code\FStore\src\BuildingBlocks\FStore.EventBus\obj\Debug\net10.0\FStore.Event
 D:\Code\FStore\src\BuildingBlocks\FStore.EventBus\obj\Debug\net10.0\refint\FStore.EventBus.dll
 D:\Code\FStore\src\BuildingBlocks\FStore.EventBus\obj\Debug\net10.0\FStore.EventBus.pdb
 D:\Code\FStore\src\BuildingBlocks\FStore.EventBus\obj\Debug\net10.0\ref\FStore.EventBus.dll
+D:\Code\FStore\src\BuildingBLocks\FStore.EventBus\obj\Debug\net10.0\FStore.EventBus.sourcelink.json

@@ -15,3 +15,4 @@ D:\Code\FStore\src\Services\Catalog\FStore.Catalog.Infrastructure\obj\Debug\net1
 D:\Code\FStore\src\Services\Catalog\FStore.Catalog.Infrastructure\obj\Debug\net10.0\FStore.Catalog.Infrastructure.pdb
 D:\Code\FStore\src\Services\Catalog\FStore.Catalog.Infrastructure\obj\Debug\net10.0\FStore.Catalog.Infrastructure.genruntimeconfig.cache
 D:\Code\FStore\src\Services\Catalog\FStore.Catalog.Infrastructure\obj\Debug\net10.0\ref\FStore.Catalog.Infrastructure.dll
+D:\Code\FStore\src\Services\Catalog\FStore.Catalog.Infrastructure\obj\Debug\net10.0\FStore.Catalog.Infrastructure.sourcelink.json

@@ -9,3 +9,4 @@ D:\Code\FStore\src\Services\Catalog\FStore.Catalog.Domain\obj\Debug\net10.0\FSto
 D:\Code\FStore\src\Services\Catalog\FStore.Catalog.Domain\obj\Debug\net10.0\refint\FStore.Catalog.Domain.dll
 D:\Code\FStore\src\Services\Catalog\FStore.Catalog.Domain\obj\Debug\net10.0\FStore.Catalog.Domain.pdb
 D:\Code\FStore\src\Services\Catalog\FStore.Catalog.Domain\obj\Debug\net10.0\ref\FStore.Catalog.Domain.dll
+D:\Code\FStore\src\Services\Catalog\FStore.Catalog.Domain\obj\Debug\net10.0\FStore.Catalog.Domain.sourcelink.json

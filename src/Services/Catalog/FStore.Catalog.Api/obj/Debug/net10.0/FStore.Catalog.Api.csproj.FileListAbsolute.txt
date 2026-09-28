@@ -177,3 +177,4 @@ D:\Code\FStore\src\Services\Catalog\FStore.Catalog.Api\obj\Debug\net10.0\refint\
 D:\Code\FStore\src\Services\Catalog\FStore.Catalog.Api\obj\Debug\net10.0\FStore.Catalog.Api.pdb
 D:\Code\FStore\src\Services\Catalog\FStore.Catalog.Api\obj\Debug\net10.0\FStore.Catalog.Api.genruntimeconfig.cache
 D:\Code\FStore\src\Services\Catalog\FStore.Catalog.Api\obj\Debug\net10.0\ref\FStore.Catalog.Api.dll
+D:\Code\FStore\src\Services\Catalog\FStore.Catalog.Api\obj\Debug\net10.0\FStore.Catalog.Api.sourcelink.json

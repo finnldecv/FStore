@@ -173,3 +173,4 @@ D:\Code\FStore\tests\FStore.Catalog.UnitTests\obj\Debug\net10.0\refint\FStore.Ca
 D:\Code\FStore\tests\FStore.Catalog.UnitTests\obj\Debug\net10.0\FStore.Catalog.UnitTests.pdb
 D:\Code\FStore\tests\FStore.Catalog.UnitTests\obj\Debug\net10.0\FStore.Catalog.UnitTests.genruntimeconfig.cache
 D:\Code\FStore\tests\FStore.Catalog.UnitTests\obj\Debug\net10.0\ref\FStore.Catalog.UnitTests.dll
+D:\Code\FStore\tests\FStore.Catalog.UnitTests\obj\Debug\net10.0\FStore.Catalog.UnitTests.sourcelink.json

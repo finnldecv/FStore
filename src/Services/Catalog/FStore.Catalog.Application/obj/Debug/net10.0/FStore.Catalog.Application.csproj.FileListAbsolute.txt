@@ -17,3 +17,4 @@ D:\Code\FStore\src\Services\Catalog\FStore.Catalog.Application\obj\Debug\net10.0
 D:\Code\FStore\src\Services\Catalog\FStore.Catalog.Application\obj\Debug\net10.0\refint\FStore.Catalog.Application.dll
 D:\Code\FStore\src\Services\Catalog\FStore.Catalog.Application\obj\Debug\net10.0\FStore.Catalog.Application.pdb
 D:\Code\FStore\src\Services\Catalog\FStore.Catalog.Application\obj\Debug\net10.0\ref\FStore.Catalog.Application.dll
+D:\Code\FStore\src\Services\Catalog\FStore.Catalog.Application\obj\Debug\net10.0\FStore.Catalog.Application.sourcelink.json

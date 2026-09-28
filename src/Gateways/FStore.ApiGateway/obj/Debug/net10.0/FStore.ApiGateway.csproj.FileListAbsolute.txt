@@ -30,3 +30,4 @@ D:\Code\FStore\src\Gateways\FStore.ApiGateway\obj\Debug\net10.0\refint\FStore.Ap
 D:\Code\FStore\src\Gateways\FStore.ApiGateway\obj\Debug\net10.0\FStore.ApiGateway.pdb
 D:\Code\FStore\src\Gateways\FStore.ApiGateway\obj\Debug\net10.0\FStore.ApiGateway.genruntimeconfig.cache
 D:\Code\FStore\src\Gateways\FStore.ApiGateway\obj\Debug\net10.0\ref\FStore.ApiGateway.dll
+D:\Code\FStore\src\Gateways\FStore.ApiGateway\obj\Debug\net10.0\FStore.ApiGateway.sourcelink.json
