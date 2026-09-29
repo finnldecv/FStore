@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\FStore.Basket.Application\FStore.Basket.Application.csproj" />
+    <ProjectReference Include="..\FStore.Basket.Infrastructure\FStore.Basket.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\..\BuildingBlocks\FStore.Common\FStore.Common.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>

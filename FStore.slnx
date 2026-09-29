@@ -8,6 +8,12 @@
     <Project Path="src/Gateways/FStore.ApiGateway/FStore.ApiGateway.csproj" />
   </Folder>
   <Folder Name="/src/Services/" />
+  <Folder Name="/src/Services/Basket/">
+    <Project Path="src/Services/Basket/FStore.Basket.Api/FStore.Basket.Api.csproj" />
+    <Project Path="src/Services/Basket/FStore.Basket.Application/FStore.Basket.Application.csproj" />
+    <Project Path="src/Services/Basket/FStore.Basket.Domain/FStore.Basket.Domain.csproj" />
+    <Project Path="src/Services/Basket/FStore.Basket.Infrastructure/FStore.Basket.Infrastructure.csproj" />
+  </Folder>
   <Folder Name="/src/Services/Catalog/">
     <Project Path="src/Services/Catalog/FStore.Catalog.Api/FStore.Catalog.Api.csproj" />
     <Project Path="src/Services/Catalog/FStore.Catalog.Application/FStore.Catalog.Application.csproj" />
