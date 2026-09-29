@@ -1,8 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "mAIIz+jO86A=",
+  "dgSpecHash": "8yls/bUux9E=",
   "success": true,
   "projectFilePath": "D:\\Code\\FStore\\src\\Services\\Basket\\FStore.Basket.Infrastructure\\FStore.Basket.Infrastructure.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\lamnh\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\10.0.5\\microsoft.extensions.dependencyinjection.abstractions.10.0.5.nupkg.sha512",
+    "C:\\Users\\lamnh\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\10.0.5\\microsoft.extensions.logging.abstractions.10.0.5.nupkg.sha512",
+    "C:\\Users\\lamnh\\.nuget\\packages\\respite\\3.3.1\\respite.3.3.1.nupkg.sha512",
+    "C:\\Users\\lamnh\\.nuget\\packages\\stackexchange.redis\\3.3.1\\stackexchange.redis.3.3.1.nupkg.sha512",
+    "C:\\Users\\lamnh\\.nuget\\packages\\system.io.hashing\\10.0.12\\system.io.hashing.10.0.12.nupkg.sha512"
+  ],
   "logs": []
 }

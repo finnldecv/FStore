@@ -9,6 +9,13 @@ services:
     volumes:
       - catalog_data:/var/opt/mssql
 
+  basketdb:
+    image: redis:7-alpine
+    ports:
+      - "6379-6379"
+    volumes:
+      - basket_data:/data
+
   rabbitmq:
     image: rabbitmq:3-management-alpine
     ports: 
@@ -20,3 +27,4 @@ services:
 
 volumes:
   catalog_data:
+  basket_data:
