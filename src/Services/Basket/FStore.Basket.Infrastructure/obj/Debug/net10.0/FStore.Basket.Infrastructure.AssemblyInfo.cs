@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FStore.Basket.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5e420ff59b924581d30738c1f01a09a11268e76d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ac0741584dc206070ee638675daa2c78426afb93")]
 [assembly: System.Reflection.AssemblyProductAttribute("FStore.Basket.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FStore.Basket.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
