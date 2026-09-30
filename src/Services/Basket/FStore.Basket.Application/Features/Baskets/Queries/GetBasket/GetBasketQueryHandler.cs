@@ -6,9 +6,9 @@ namespace FStore.Basket.Application.Features.Baskets.Queries.GetBasket;
 
 public class GetBasketQueryHandler : IRequestHandler<GetBasketQuery, ShoppingCart?>
 {
-  private readonly IBasKetRepository _repository;
+  private readonly IBasketRepository _repository;
 
-  public GetBasketQueryHandler(IBasKetRepository repository)
+  public GetBasketQueryHandler(IBasketRepository repository)
   {
     _repository = repository;
   }
