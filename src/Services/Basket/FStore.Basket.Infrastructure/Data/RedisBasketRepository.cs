@@ -4,7 +4,7 @@ using StackExchange.Redis;
 
 namespace FStore.Basket.Infrastructure.Data;
 
-public class RedisBasketRepository : IBasKetRepository
+public class RedisBasketRepository : IBasketRepository
 {
   private readonly IDatabase _database;
 
@@ -12,6 +12,7 @@ public class RedisBasketRepository : IBasKetRepository
   {
     _database = redis.GetDatabase();
   }
+
   public async Task<ShoppingCart?> GetBasketAsync(Guid userId)
   {
     var data = await _database.StringGetAsync(userId.ToString());
@@ -22,5 +23,11 @@ public class RedisBasketRepository : IBasKetRepository
   {
     var data = JsonSerializer.Serialize(cart);
     await _database.StringSetAsync(cart.UserId.ToString(), data, TimeSpan.FromDays(7));
+  }
+
+
+  public async Task DeleteBasketAsync(Guid userId)
+  {
+    await _database.KeyDeleteAsync(userId.ToString());
   }
 }

@@ -6,4 +6,5 @@ public interface IBasketRepository
 {
   Task<ShoppingCart?> GetBasketAsync(Guid userId);
   Task SaveBasketAsync(ShoppingCart cart);
+  Task DeleteBasketAsync(Guid userId);
 }
