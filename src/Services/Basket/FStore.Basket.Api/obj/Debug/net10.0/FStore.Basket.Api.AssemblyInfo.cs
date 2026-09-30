@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FStore.Basket.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c9621f7effac9a610d692443e1031d686ca8aa77")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+edbbe7f7c47ee3f14e873c54614aa4ea96cbe03a")]
 [assembly: System.Reflection.AssemblyProductAttribute("FStore.Basket.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FStore.Basket.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
