@@ -22,3 +22,15 @@ D:/Code/FStore/src/Services/Catalog/FStore.Catalog.Domain/obj/Debug/net10.0/FSto
 /mnt/d/Code/FStore/src/Services/Catalog/FStore.Catalog.Domain/obj/Debug/net10.0/refint/FStore.Catalog.Domain.dll
 /mnt/d/Code/FStore/src/Services/Catalog/FStore.Catalog.Domain/obj/Debug/net10.0/FStore.Catalog.Domain.pdb
 /mnt/d/Code/FStore/src/Services/Catalog/FStore.Catalog.Domain/obj/Debug/net10.0/ref/FStore.Catalog.Domain.dll
+D:\Code\FStore\src\Services\Catalog\FStore.Catalog.Domain\bin\Debug\net10.0\FStore.Catalog.Domain.deps.json
+D:\Code\FStore\src\Services\Catalog\FStore.Catalog.Domain\bin\Debug\net10.0\FStore.Catalog.Domain.dll
+D:\Code\FStore\src\Services\Catalog\FStore.Catalog.Domain\bin\Debug\net10.0\FStore.Catalog.Domain.pdb
+D:\Code\FStore\src\Services\Catalog\FStore.Catalog.Domain\obj\Debug\net10.0\FStore.Catalog.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Code\FStore\src\Services\Catalog\FStore.Catalog.Domain\obj\Debug\net10.0\FStore.Catalog.Domain.AssemblyInfoInputs.cache
+D:\Code\FStore\src\Services\Catalog\FStore.Catalog.Domain\obj\Debug\net10.0\FStore.Catalog.Domain.AssemblyInfo.cs
+D:\Code\FStore\src\Services\Catalog\FStore.Catalog.Domain\obj\Debug\net10.0\FStore.Catalog.Domain.csproj.CoreCompileInputs.cache
+D:\Code\FStore\src\Services\Catalog\FStore.Catalog.Domain\obj\Debug\net10.0\FStore.Catalog.Domain.sourcelink.json
+D:\Code\FStore\src\Services\Catalog\FStore.Catalog.Domain\obj\Debug\net10.0\FStore.Catalog.Domain.dll
+D:\Code\FStore\src\Services\Catalog\FStore.Catalog.Domain\obj\Debug\net10.0\refint\FStore.Catalog.Domain.dll
+D:\Code\FStore\src\Services\Catalog\FStore.Catalog.Domain\obj\Debug\net10.0\FStore.Catalog.Domain.pdb
+D:\Code\FStore\src\Services\Catalog\FStore.Catalog.Domain\obj\Debug\net10.0\ref\FStore.Catalog.Domain.dll

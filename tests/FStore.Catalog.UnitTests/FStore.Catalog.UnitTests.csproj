@@ -10,6 +10,7 @@
   <ItemGroup>
     <PackageReference Include="coverlet.collector" Version="6.0.4" />
     <PackageReference Include="FluentAssertions" Version="8.11.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="10.0.12" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
     <PackageReference Include="NSubstitute" Version="6.2.0" />
     <PackageReference Include="xunit" Version="2.9.3" />
@@ -23,6 +24,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\Services\Catalog\FStore.Catalog.Application\FStore.Catalog.Application.csproj" />
     <ProjectReference Include="..\..\src\Services\Catalog\FStore.Catalog.Domain\FStore.Catalog.Domain.csproj" />
+    <ProjectReference Include="..\..\src\Services\Catalog\FStore.Catalog.Infrastructure\FStore.Catalog.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\src\BuildingBlocks\FStore.EventBus\FStore.EventBus.csproj" />
   </ItemGroup>
 
 </Project>

@@ -174,3 +174,14 @@ D:\Code\FStore\tests\FStore.Catalog.UnitTests\obj\Debug\net10.0\FStore.Catalog.U
 D:\Code\FStore\tests\FStore.Catalog.UnitTests\obj\Debug\net10.0\FStore.Catalog.UnitTests.genruntimeconfig.cache
 D:\Code\FStore\tests\FStore.Catalog.UnitTests\obj\Debug\net10.0\ref\FStore.Catalog.UnitTests.dll
 D:\Code\FStore\tests\FStore.Catalog.UnitTests\obj\Debug\net10.0\FStore.Catalog.UnitTests.sourcelink.json
+D:\Code\FStore\tests\FStore.Catalog.UnitTests\bin\Debug\net10.0\MassTransit.dll
+D:\Code\FStore\tests\FStore.Catalog.UnitTests\bin\Debug\net10.0\MassTransit.Abstractions.dll
+D:\Code\FStore\tests\FStore.Catalog.UnitTests\bin\Debug\net10.0\MassTransit.RabbitMqTransport.dll
+D:\Code\FStore\tests\FStore.Catalog.UnitTests\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.InMemory.dll
+D:\Code\FStore\tests\FStore.Catalog.UnitTests\bin\Debug\net10.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
+D:\Code\FStore\tests\FStore.Catalog.UnitTests\bin\Debug\net10.0\Microsoft.Extensions.Diagnostics.HealthChecks.dll
+D:\Code\FStore\tests\FStore.Catalog.UnitTests\bin\Debug\net10.0\Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll
+D:\Code\FStore\tests\FStore.Catalog.UnitTests\bin\Debug\net10.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+D:\Code\FStore\tests\FStore.Catalog.UnitTests\bin\Debug\net10.0\Microsoft.Extensions.Hosting.Abstractions.dll
+D:\Code\FStore\tests\FStore.Catalog.UnitTests\bin\Debug\net10.0\RabbitMQ.Client.dll
+D:\Code\FStore\tests\FStore.Catalog.UnitTests\bin\Debug\net10.0\System.Threading.RateLimiting.dll

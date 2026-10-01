@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FStore.Catalog.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c1f0ae5214281a3d844c96f5e1d6931270fadbea")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+10c1caf5abcf880a1d2906f0b5ce08b4debb2d51")]
 [assembly: System.Reflection.AssemblyProductAttribute("FStore.Catalog.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FStore.Catalog.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

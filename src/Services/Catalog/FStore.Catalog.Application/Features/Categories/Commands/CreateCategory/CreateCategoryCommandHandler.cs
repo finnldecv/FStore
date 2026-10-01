@@ -10,7 +10,7 @@ public class CreateCategoryCommandHandler : IRequestHandler<CreateCategoryComman
   public CreateCategoryCommandHandler(CatalogDbContext context) => _context = context;
   public async Task<Guid> Handle(CreateCategoryCommand request, CancellationToken ct)
   {
-    var category = new Category { Name = request.Name };
+    var category = new Category(request.Name);
     _context.Categories.Add(category);
     await _context.SaveChangesAsync(ct);
     return category.Id;

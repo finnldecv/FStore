@@ -13,11 +13,11 @@ public class UpdateCategoryCommandHandler : IRequestHandler<UpdateCategoryComman
   }
   public async Task<bool> Handle(UpdateCategoryCommand request, CancellationToken ct)
   {
-    var category = await _context.Categories.FindAsync( new object [] {request.Id}, ct);
+    var category = await _context.Categories.FindAsync(new object[] { request.Id }, ct);
 
-    if(category is null) return false;
+    if (category is null) return false;
 
-    category.Name = request.Name;
+    category.Update(request.Name);
     category.UpdatedAt = DateTime.UtcNow;
     await _context.SaveChangesAsync(ct);
     return true;
