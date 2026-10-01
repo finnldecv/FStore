@@ -2,6 +2,8 @@ using FStore.Catalog.Application;
 using FStore.Catalog.Infrastructure;
 using FStore.Catalog.Infrastructure.Data;
 using FStore.Common.Middleware;
+using FStore.EventBus;
+using MassTransit;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,7 +15,19 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddOpenApi();
 
 builder.Services.AddApplication();
+
 builder.Services.AddInfrastructure(builder.Configuration);
+
+builder.Services.AddScoped<IEventBus, MassTransitEventBus>();
+
+builder.Services.AddMassTransit(x =>
+{
+  x.UsingRabbitMq((context, cfg) =>
+  {
+    cfg.Host(builder.Configuration.GetConnectionString("RabbitMq") ?? "localhost");
+    cfg.ConfigureEndpoints(context);
+  });
+});
 
 var app = builder.Build();
 

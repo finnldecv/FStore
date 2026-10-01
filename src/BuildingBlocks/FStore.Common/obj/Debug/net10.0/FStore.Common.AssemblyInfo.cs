@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FStore.Common")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+edbbe7f7c47ee3f14e873c54614aa4ea96cbe03a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c1f0ae5214281a3d844c96f5e1d6931270fadbea")]
 [assembly: System.Reflection.AssemblyProductAttribute("FStore.Common")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FStore.Common")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

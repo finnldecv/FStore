@@ -49,6 +49,16 @@
       "frameworks": {
         "net10.0": {
           "targetAlias": "net10.0",
+          "dependencies": {
+            "MassTransit": {
+              "target": "Package",
+              "version": "[9.2.2, )"
+            },
+            "MassTransit.RabbitMQ": {
+              "target": "Package",
+              "version": "[9.2.2, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -402,6 +412,10 @@
             "FluentValidation.DependencyInjectionExtensions": {
               "target": "Package",
               "version": "[12.1.1, )"
+            },
+            "MassTransit.RabbitMQ": {
+              "target": "Package",
+              "version": "[9.2.2, )"
             },
             "MediatR": {
               "target": "Package",
