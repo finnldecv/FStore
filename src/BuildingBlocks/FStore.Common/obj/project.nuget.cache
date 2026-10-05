@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "iT579GYh2p0=",
+  "dgSpecHash": "o82y7OErHx8=",
   "success": true,
   "projectFilePath": "D:\\Code\\FStore\\src\\BuildingBLocks\\FStore.Common\\FStore.Common.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\lamnh\\.nuget\\packages\\fluentvalidation\\12.1.1\\fluentvalidation.12.1.1.nupkg.sha512"
+  ],
   "logs": []
 }

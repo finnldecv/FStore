@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "jcFgG9uL86U=",
+  "dgSpecHash": "FwtlZCZHvvM=",
   "success": true,
   "projectFilePath": "D:\\Code\\FStore\\tests\\FStore.Catalog.IntegrationTests\\FStore.Catalog.IntegrationTests.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\lamnh\\.nuget\\packages\\awesomeassertions\\9.6.0\\awesomeassertions.9.6.0.nupkg.sha512",
     "C:\\Users\\lamnh\\.nuget\\packages\\azure.core\\1.50.0\\azure.core.1.50.0.nupkg.sha512",
     "C:\\Users\\lamnh\\.nuget\\packages\\azure.identity\\1.17.1\\azure.identity.1.17.1.nupkg.sha512",
     "C:\\Users\\lamnh\\.nuget\\packages\\bouncycastle.cryptography\\2.7.0\\bouncycastle.cryptography.2.7.0.nupkg.sha512",
@@ -15,7 +16,6 @@
     "C:\\Users\\lamnh\\.nuget\\packages\\docker.dotnet.enhanced.npipe\\4.3.3\\docker.dotnet.enhanced.npipe.4.3.3.nupkg.sha512",
     "C:\\Users\\lamnh\\.nuget\\packages\\docker.dotnet.enhanced.unix\\4.3.3\\docker.dotnet.enhanced.unix.4.3.3.nupkg.sha512",
     "C:\\Users\\lamnh\\.nuget\\packages\\docker.dotnet.enhanced.x509\\4.3.3\\docker.dotnet.enhanced.x509.4.3.3.nupkg.sha512",
-    "C:\\Users\\lamnh\\.nuget\\packages\\fluentassertions\\8.11.0\\fluentassertions.8.11.0.nupkg.sha512",
     "C:\\Users\\lamnh\\.nuget\\packages\\fluentvalidation\\12.1.1\\fluentvalidation.12.1.1.nupkg.sha512",
     "C:\\Users\\lamnh\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\12.1.1\\fluentvalidation.dependencyinjectionextensions.12.1.1.nupkg.sha512",
     "C:\\Users\\lamnh\\.nuget\\packages\\masstransit\\9.2.2\\masstransit.9.2.2.nupkg.sha512",

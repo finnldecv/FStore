@@ -2,6 +2,19 @@
   "version": 3,
   "targets": {
     "net10.0": {
+      "AwesomeAssertions/9.6.0": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/AwesomeAssertions.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/AwesomeAssertions.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "Azure.Core/1.50.0": {
         "type": "package",
         "dependencies": {
@@ -180,19 +193,6 @@
             "related": ".xml"
           },
           "lib/net10.0/Microsoft.Net.Http.Client.dll": {}
-        }
-      },
-      "FluentAssertions/8.11.0": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/FluentAssertions.dll": {
-            "related": ".pdb;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/FluentAssertions.dll": {
-            "related": ".pdb;.xml"
-          }
         }
       },
       "FluentValidation/12.1.1": {
@@ -2117,6 +2117,9 @@
       "FStore.Common/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v10.0",
+        "dependencies": {
+          "FluentValidation": "12.1.1"
+        },
         "compile": {
           "bin/placeholder/FStore.Common.dll": {}
         },
@@ -2144,6 +2147,34 @@
     }
   },
   "libraries": {
+    "AwesomeAssertions/9.6.0": {
+      "sha512": "8kdtgI+tZIgP46ncnk650/dU4JSrn+n2Dkic8FvjIFn72P6Nv1Afyr5F8F3PsokHg1GBSBVo1/Z+eZOrU5esSA==",
+      "type": "package",
+      "path": "awesomeassertions/9.6.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "AwesomeAssertions.png",
+        "README.md",
+        "awesomeassertions.9.6.0.nupkg.sha512",
+        "awesomeassertions.nuspec",
+        "lib/net47/AwesomeAssertions.dll",
+        "lib/net47/AwesomeAssertions.pdb",
+        "lib/net47/AwesomeAssertions.xml",
+        "lib/net6.0/AwesomeAssertions.dll",
+        "lib/net6.0/AwesomeAssertions.pdb",
+        "lib/net6.0/AwesomeAssertions.xml",
+        "lib/net8.0/AwesomeAssertions.dll",
+        "lib/net8.0/AwesomeAssertions.pdb",
+        "lib/net8.0/AwesomeAssertions.xml",
+        "lib/netstandard2.0/AwesomeAssertions.dll",
+        "lib/netstandard2.0/AwesomeAssertions.pdb",
+        "lib/netstandard2.0/AwesomeAssertions.xml",
+        "lib/netstandard2.1/AwesomeAssertions.dll",
+        "lib/netstandard2.1/AwesomeAssertions.pdb",
+        "lib/netstandard2.1/AwesomeAssertions.xml"
+      ]
+    },
     "Azure.Core/1.50.0": {
       "sha512": "GBNKZEhdIbTXxedvD3R7I/yDVFX9jJJEz02kCziFSJxspSQ5RMHc3GktulJ1s7+ffXaXD7kMgrtdQTaggyInLw==",
       "type": "package",
@@ -2453,31 +2484,6 @@
         "lib/netstandard2.1/Docker.DotNet.X509.dll",
         "lib/netstandard2.1/Docker.DotNet.X509.xml",
         "lib/netstandard2.1/Microsoft.Net.Http.Client.dll"
-      ]
-    },
-    "FluentAssertions/8.11.0": {
-      "sha512": "dZqOxys9uY/0vO5BAwFtDECkFNSr9vWGwHa1fwZyuM1xAMbI4wiPTUBR2nH5e6R2/bQkXegxFY1B/oU1yqNNOw==",
-      "type": "package",
-      "path": "fluentassertions/8.11.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "FluentAssertions.png",
-        "LICENSE",
-        "fluentassertions.8.11.0.nupkg.sha512",
-        "fluentassertions.nuspec",
-        "lib/net47/FluentAssertions.dll",
-        "lib/net47/FluentAssertions.pdb",
-        "lib/net47/FluentAssertions.xml",
-        "lib/net6.0/FluentAssertions.dll",
-        "lib/net6.0/FluentAssertions.pdb",
-        "lib/net6.0/FluentAssertions.xml",
-        "lib/netstandard2.0/FluentAssertions.dll",
-        "lib/netstandard2.0/FluentAssertions.pdb",
-        "lib/netstandard2.0/FluentAssertions.xml",
-        "lib/netstandard2.1/FluentAssertions.dll",
-        "lib/netstandard2.1/FluentAssertions.pdb",
-        "lib/netstandard2.1/FluentAssertions.xml"
       ]
     },
     "FluentValidation/12.1.1": {
@@ -4923,9 +4929,9 @@
   },
   "projectFileDependencyGroups": {
     "net10.0": [
+      "AwesomeAssertions >= 9.6.0",
       "FStore.Catalog.Api >= 1.0.0",
       "FStore.Catalog.Infrastructure >= 1.0.0",
-      "FluentAssertions >= 8.11.0",
       "Microsoft.AspNetCore.Mvc.Testing >= 10.0.12",
       "Microsoft.NET.Test.Sdk >= 17.14.1",
       "Microsoft.OpenApi >= 2.7.5",
@@ -4992,9 +4998,9 @@
       "net10.0": {
         "targetAlias": "net10.0",
         "dependencies": {
-          "FluentAssertions": {
+          "AwesomeAssertions": {
             "target": "Package",
-            "version": "[8.11.0, )"
+            "version": "[9.6.0, )"
           },
           "Microsoft.AspNetCore.Mvc.Testing": {
             "target": "Package",

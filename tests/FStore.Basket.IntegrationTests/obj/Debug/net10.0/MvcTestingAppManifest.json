@@ -1,0 +1,8 @@
+{
+  "FStore.Basket.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "D:\\Code\\FStore\\src\\Services\\Basket\\FStore.Basket.api",
+  "FStore.Basket.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "D:\\Code\\FStore\\src\\Services\\Basket\\FStore.Basket.Application",
+  "FStore.Basket.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "D:\\Code\\FStore\\src\\Services\\Basket\\FStore.Basket.Domain",
+  "FStore.Basket.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "D:\\Code\\FStore\\src\\Services\\Basket\\FStore.Basket.Infrastructure",
+  "FStore.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "D:\\Code\\FStore\\src\\BuildingBlocks\\FStore.Common",
+  "FStore.EventBus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "D:\\Code\\FStore\\src\\BuildingBlocks\\FStore.EventBus"
+}

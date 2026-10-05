@@ -11,7 +11,6 @@ D:\Code\FStore\tests\FStore.Catalog.UnitTests\bin\Debug\net10.0\FStore.Catalog.U
 D:\Code\FStore\tests\FStore.Catalog.UnitTests\bin\Debug\net10.0\Azure.Core.dll
 D:\Code\FStore\tests\FStore.Catalog.UnitTests\bin\Debug\net10.0\Azure.Identity.dll
 D:\Code\FStore\tests\FStore.Catalog.UnitTests\bin\Debug\net10.0\Castle.Core.dll
-D:\Code\FStore\tests\FStore.Catalog.UnitTests\bin\Debug\net10.0\FluentAssertions.dll
 D:\Code\FStore\tests\FStore.Catalog.UnitTests\bin\Debug\net10.0\FluentValidation.dll
 D:\Code\FStore\tests\FStore.Catalog.UnitTests\bin\Debug\net10.0\FluentValidation.DependencyInjectionExtensions.dll
 D:\Code\FStore\tests\FStore.Catalog.UnitTests\bin\Debug\net10.0\MediatR.dll
@@ -185,3 +184,4 @@ D:\Code\FStore\tests\FStore.Catalog.UnitTests\bin\Debug\net10.0\Microsoft.Extens
 D:\Code\FStore\tests\FStore.Catalog.UnitTests\bin\Debug\net10.0\Microsoft.Extensions.Hosting.Abstractions.dll
 D:\Code\FStore\tests\FStore.Catalog.UnitTests\bin\Debug\net10.0\RabbitMQ.Client.dll
 D:\Code\FStore\tests\FStore.Catalog.UnitTests\bin\Debug\net10.0\System.Threading.RateLimiting.dll
+D:\Code\FStore\tests\FStore.Catalog.UnitTests\bin\Debug\net10.0\AwesomeAssertions.dll

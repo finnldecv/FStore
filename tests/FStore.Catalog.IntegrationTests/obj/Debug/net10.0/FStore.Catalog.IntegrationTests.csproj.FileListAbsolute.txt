@@ -303,7 +303,6 @@ D:\Code\FStore\tests\FStore.Catalog.IntegrationTests\bin\Debug\net10.0\Docker.Do
 D:\Code\FStore\tests\FStore.Catalog.IntegrationTests\bin\Debug\net10.0\Docker.DotNet.NPipe.dll
 D:\Code\FStore\tests\FStore.Catalog.IntegrationTests\bin\Debug\net10.0\Docker.DotNet.Unix.dll
 D:\Code\FStore\tests\FStore.Catalog.IntegrationTests\bin\Debug\net10.0\Docker.DotNet.X509.dll
-D:\Code\FStore\tests\FStore.Catalog.IntegrationTests\bin\Debug\net10.0\FluentAssertions.dll
 D:\Code\FStore\tests\FStore.Catalog.IntegrationTests\bin\Debug\net10.0\FluentValidation.dll
 D:\Code\FStore\tests\FStore.Catalog.IntegrationTests\bin\Debug\net10.0\FluentValidation.DependencyInjectionExtensions.dll
 D:\Code\FStore\tests\FStore.Catalog.IntegrationTests\bin\Debug\net10.0\MediatR.dll
@@ -496,3 +495,8 @@ D:\Code\FStore\tests\FStore.Catalog.IntegrationTests\obj\Debug\net10.0\FStore.Ca
 D:\Code\FStore\tests\FStore.Catalog.IntegrationTests\obj\Debug\net10.0\FStore.Catalog.IntegrationTests.genruntimeconfig.cache
 D:\Code\FStore\tests\FStore.Catalog.IntegrationTests\obj\Debug\net10.0\ref\FStore.Catalog.IntegrationTests.dll
 D:\Code\FStore\tests\FStore.Catalog.IntegrationTests\obj\Debug\net10.0\FStore.Catalog.IntegrationTests.sourcelink.json
+D:\Code\FStore\tests\FStore.Catalog.IntegrationTests\bin\Debug\net10.0\AwesomeAssertions.dll
+D:\Code\FStore\tests\FStore.Catalog.IntegrationTests\bin\Debug\net10.0\MassTransit.dll
+D:\Code\FStore\tests\FStore.Catalog.IntegrationTests\bin\Debug\net10.0\MassTransit.Abstractions.dll
+D:\Code\FStore\tests\FStore.Catalog.IntegrationTests\bin\Debug\net10.0\MassTransit.RabbitMqTransport.dll
+D:\Code\FStore\tests\FStore.Catalog.IntegrationTests\bin\Debug\net10.0\RabbitMQ.Client.dll

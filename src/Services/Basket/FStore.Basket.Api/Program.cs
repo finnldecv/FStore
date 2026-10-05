@@ -24,7 +24,7 @@ builder.Services.AddMassTransit(x =>
 {
   x.AddConsumer<ProductPriceChangedConsumer>();
   x.AddConsumer<ProductDeletedConsumer>();
-  
+
   x.UsingRabbitMq((context, cfg) =>
   {
     cfg.Host(builder.Configuration.GetConnectionString("RabbitMq") ?? "localhost");
@@ -37,7 +37,7 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+  app.MapOpenApi();
 }
 
 //app.UseHttpsRedirection();

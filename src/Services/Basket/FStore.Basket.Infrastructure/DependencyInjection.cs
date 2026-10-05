@@ -14,7 +14,7 @@ public static class DependencyInjection
       var redisConnection = configuration.GetConnectionString("BasketDb");
       return ConnectionMultiplexer.Connect(redisConnection!);
     });
-    services.AddScoped<IBasKetRepository, RedisBasketRepository>();
+    services.AddScoped<IBasketRepository, RedisBasketRepository>();
     return services;
   }
 }

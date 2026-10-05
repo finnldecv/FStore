@@ -21,6 +21,8 @@
     <Project Path="src/Services/Catalog/FStore.Catalog.Infrastructure/FStore.Catalog.Infrastructure.csproj" />
   </Folder>
   <Folder Name="/tests/">
+    <Project Path="tests/FStore.Basket.IntegrationTests/FStore.Basket.IntegrationTests.csproj" />
+    <Project Path="tests/FStore.Basket.UnitTests/FStore.Basket.UnitTests.csproj" />
     <Project Path="tests/FStore.Catalog.IntegrationTests/FStore.Catalog.IntegrationTests.csproj" />
     <Project Path="tests/FStore.Catalog.UnitTests/FStore.Catalog.UnitTests.csproj" />
   </Folder>

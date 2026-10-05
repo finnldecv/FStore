@@ -3,6 +3,7 @@ using System.Text.Json;
 using System.Threading.Tasks.Dataflow;
 using FStore.Common.Exceptions;
 using Microsoft.AspNetCore.Http;
+using FluentValidation;
 
 namespace FStore.Common.Middleware;
 
@@ -23,6 +24,13 @@ public class ExceptionMiddleware
     catch (AppException ex)
     {
       await WriteError(context, HttpStatusCode.BadRequest, ex.Message);
+    }
+    catch (FluentValidation.ValidationException ex)
+    {
+      context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+      context.Response.ContentType = "application/json";
+      var errors = ex.Errors.Select(e => new { field = e.PropertyName, error = e.ErrorMessage });
+      await context.Response.WriteAsJsonAsync(new { errors });
     }
     catch (Exception ex)
     {

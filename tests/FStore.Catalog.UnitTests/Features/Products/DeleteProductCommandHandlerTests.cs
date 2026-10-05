@@ -1,4 +1,4 @@
-using FluentAssertions;
+using AwesomeAssertions;
 using FStore.Catalog.Application.Features.Products.Commands.DeleteProduct;
 using FStore.Catalog.Domain.Entities;
 using FStore.Catalog.Domain.ValueObjects;

@@ -1,4 +1,4 @@
-using FluentAssertions;
+using AwesomeAssertions;
 using FStore.Catalog.Application.Features.Products.Commands.CreateProduct;
 using FStore.Catalog.UnitTests.TestHelpers;
 using Microsoft.EntityFrameworkCore;

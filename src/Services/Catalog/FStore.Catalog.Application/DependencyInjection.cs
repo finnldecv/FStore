@@ -1,5 +1,6 @@
 using System.Reflection;
 using FluentValidation;
+using FStore.Catalog.Application.Behaviors;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -11,7 +12,11 @@ public static class DependencyInjection
   {
     var assembly = Assembly.GetExecutingAssembly();
 
-    services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(assembly));
+    services.AddMediatR(cfg =>
+    {
+      cfg.RegisterServicesFromAssembly(assembly);
+      cfg.AddOpenBehavior(typeof(ValidationBehavior<,>));
+    });
     services.AddValidatorsFromAssembly(assembly);
 
     return services;
