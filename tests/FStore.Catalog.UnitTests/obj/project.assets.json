@@ -3391,8 +3391,8 @@
     },
     "FStore.EventBus/1.0.0": {
       "type": "project",
-      "path": "../../src/BuildingBlocks/FStore.EventBus/FStore.EventBus.csproj",
-      "msbuildProject": "../../src/BuildingBlocks/FStore.EventBus/FStore.EventBus.csproj"
+      "path": "../../src/BuildingBLocks/FStore.EventBus/FStore.EventBus.csproj",
+      "msbuildProject": "../../src/BuildingBLocks/FStore.EventBus/FStore.EventBus.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -3442,8 +3442,8 @@
         "net10.0": {
           "targetAlias": "net10.0",
           "projectReferences": {
-            "D:\\Code\\FStore\\src\\BuildingBlocks\\FStore.EventBus\\FStore.EventBus.csproj": {
-              "projectPath": "D:\\Code\\FStore\\src\\BuildingBlocks\\FStore.EventBus\\FStore.EventBus.csproj"
+            "D:\\Code\\FStore\\src\\BuildingBLocks\\FStore.EventBus\\FStore.EventBus.csproj": {
+              "projectPath": "D:\\Code\\FStore\\src\\BuildingBLocks\\FStore.EventBus\\FStore.EventBus.csproj"
             },
             "D:\\Code\\FStore\\src\\Services\\Catalog\\FStore.Catalog.Application\\FStore.Catalog.Application.csproj": {
               "projectPath": "D:\\Code\\FStore\\src\\Services\\Catalog\\FStore.Catalog.Application\\FStore.Catalog.Application.csproj"
