@@ -41,7 +41,7 @@ jobs:
           echo "=== All .csproj ==="
           find . -name "*.csproj" -not -path "*/obj/*" -not -path "*/bin/*"
           echo "=== .sln references ==="
-          grep -i "BuildingBlocks" FStore.sln
+          grep -i "BuildingBlocks" FStore.slnx
 
       - name: Restore dependencies
         run: dotnet restore FStore.slnx
