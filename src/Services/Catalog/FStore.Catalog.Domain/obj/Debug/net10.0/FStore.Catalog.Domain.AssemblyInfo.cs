@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FStore.Catalog.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5770daa9a5a3694ee2229e60f9378ec5f5d39ffa")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+04bc1d36b2d37e817a9193b7fd5ca182a0df9455")]
 [assembly: System.Reflection.AssemblyProductAttribute("FStore.Catalog.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FStore.Catalog.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

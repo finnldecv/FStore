@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FStore.Basket.IntegrationTests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+63f60a604f8a30f9bf71090f3ecc857d5ee7b4f0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+04bc1d36b2d37e817a9193b7fd5ca182a0df9455")]
 [assembly: System.Reflection.AssemblyProductAttribute("FStore.Basket.IntegrationTests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FStore.Basket.IntegrationTests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
