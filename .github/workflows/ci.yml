@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+env:
+  DOTNET_VERSION: "10.0.203"
+  DOTNET_NOLOGO: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+
+jobs:
+  build-and-test:
+    name: Build & Test
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET ${{ env.DOTNET_VERSION }}
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Restore dependencies
+        run: dotnet restore FStore.sln
+
+      - name: Build
+        run: dotnet build FStore.sln --no-restore --configuration Release
+
+      - name: Run unit tests
+        run: >
+          dotnet test tests/FStore.Catalog.UnitTests/FStore.Catalog.UnitTests.csproj
+          --no-build --configuration Release --verbosity normal
+
+      - name: Run Basket unit tests
+        run: >
+          dotnet test tests/FStore.Basket.UnitTests/FStore.Basket.UnitTests.csproj
+          --no-build --configuration Release --verbosity normal
+
+      - name: Run Catalog integration tests
+        run: >
+          dotnet test tests/FStore.Catalog.IntegrationTests/FStore.Catalog.IntegrationTests.csproj
+          --no-build --configuration Release --verbosity normal
+
+      - name: Run Basket integration tests
+        run: >
+          dotnet test tests/FStore.Basket.IntegrationTests/FStore.Basket.IntegrationTests.csproj
+          --no-build --configuration Release --verbosity normal
