@@ -12,11 +12,6 @@ public class CatalogApiFactory : WebApplicationFactory<Program>, IAsyncLifetime
   private readonly MsSqlContainer _dbContainer = new MsSqlBuilder("mcr.microsoft.com/mssql/server:2022-latest")
     .WithPassword("FStore_Test_2026!")
     .Build();
-  public async Task InitializeAsync()
-  {
-    await _dbContainer.StartAsync();
-  }
-
   async Task IAsyncLifetime.DisposeAsync()
   {
     await _dbContainer.DisposeAsync();
@@ -36,5 +31,14 @@ public class CatalogApiFactory : WebApplicationFactory<Program>, IAsyncLifetime
         options.UseSqlServer(_dbContainer.GetConnectionString())
       );
     });
+  }
+
+  public async Task InitializeAsync()
+  {
+    await _dbContainer.StartAsync();
+
+    using var scope = Services.CreateScope();
+    var db = scope.ServiceProvider.GetRequiredService<CatalogDbContext>();
+    await db.Database.MigrateAsync();
   }
 }
