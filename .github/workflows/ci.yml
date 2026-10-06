@@ -17,10 +17,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
 
-    defaults:
-      run:
-        working-directory: .
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -35,6 +31,17 @@ jobs:
 
       - name: Find all solutions
         run: find . -name "*.sln" -not -path "./node_modules/*"
+
+      - name: Debug — list actual files
+        run: |
+          echo "=== src directory ==="
+          ls -la src/
+          echo "=== src/BuildingBlocks ==="
+          ls -la src/BuildingBlocks/ || echo "MISSING"
+          echo "=== All .csproj ==="
+          find . -name "*.csproj" -not -path "*/obj/*" -not -path "*/bin/*"
+          echo "=== .sln references ==="
+          grep -i "BuildingBlocks" FStore.sln
 
       - name: Restore dependencies
         run: dotnet restore FStore.slnx
