@@ -18,6 +18,12 @@ jobs:
     timeout-minutes: 20
 
     steps:
+      - name: List root files
+        run: ls -la
+
+      - name: Restore dependencies
+        run: dotnet restore FStore.sln
+
       - name: Checkout
         uses: actions/checkout@v4
 
