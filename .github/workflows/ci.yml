@@ -26,7 +26,7 @@ jobs:
         run: ls -la
 
       - name: Restore dependencies
-        run: dotnet restore FStore.slnx
+        run: dotnet restore FStore/FStore.slnx
 
       - name: Checkout
         uses: actions/checkout@v4
@@ -37,10 +37,10 @@ jobs:
           dotnet-version: ${{ env.DOTNET_VERSION }}
                 
       - name: Restore dependencies
-        run: dotnet restore FStore.slnx
+        run: dotnet restore FStore/FStore.slnx
 
       - name: Build
-        run: dotnet build FStore.slnx --no-restore --configuration Release
+        run: dotnet build FStore/FStore.slnx --no-restore --configuration Release
 
       - name: Run unit tests
         run: >
