@@ -33,10 +33,10 @@ jobs:
           dotnet-version: ${{ env.DOTNET_VERSION }}
                 
       - name: Restore dependencies
-        run: dotnet restore FStore.sln
+        run: dotnet restore FStore.slnx
 
       - name: Build
-        run: dotnet build FStore.sln --no-restore --configuration Release
+        run: dotnet build FStore.slnx --no-restore --configuration Release
 
       - name: Run unit tests
         run: >
