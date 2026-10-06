@@ -58,7 +58,7 @@ jobs:
 
           echo ""
           echo "=== .sln references (with quotes to show exactly) ==="
-          grep -i "BuildingBlocks" FStore.sln
+          grep -i "BuildingBlocks" FStore.slnx
 
           echo ""
           echo "=== Test access with exact path from .sln ==="
