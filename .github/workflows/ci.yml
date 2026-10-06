@@ -43,11 +43,41 @@ jobs:
           echo "=== .sln references ==="
           grep -i "BuildingBlocks" FStore.slnx
 
-      - name: Restore dependencies
-        run: dotnet restore FStore.slnx
+      - name: Debug — check exact paths
+        run: |
+          echo "=== Files in src/BuildingBlocks ==="
+          ls -la src/BuildingBlocks/
 
-      - name: Build
-        run: dotnet build FStore.slnx --no-restore --configuration Release
+          echo ""
+          echo "=== Contents of FStore.Common folder ==="
+          ls -la src/BuildingBlocks/FStore.Common/
+
+          echo ""
+          echo "=== Contents of FStore.EventBus folder ==="
+          ls -la src/BuildingBlocks/FStore.EventBus/
+
+          echo ""
+          echo "=== .sln references (with quotes to show exactly) ==="
+          grep -i "BuildingBlocks" FStore.sln
+
+          echo ""
+          echo "=== Test access with exact path from .sln ==="
+          test -f src/BuildingBlocks/FStore.Common/FStore.Common.csproj && echo "FOUND" || echo "NOT FOUND"
+          test -f src/BuildingBlocks/FStore.EventBus/FStore.EventBus.csproj && echo "FOUND" || echo "NOT FOUND"
+
+      - name: Restore all projects
+        run: |
+          for proj in $(find . -name "*.csproj" -not -path "*/obj/*" -not -path "*/bin/*"); do
+            echo "Restoring $proj"
+            dotnet restore "$proj"
+          done
+
+      - name: Build all projects
+        run: |
+          for proj in $(find . -name "*.csproj" -not -path "*/obj/*" -not -path "*/bin/*"); do
+            echo "Building $proj"
+            dotnet build "$proj" --configuration Release --no-restore
+          done
 
       - name: Run Catalog unit tests
         run: >
