@@ -13,8 +13,12 @@ public class DeleteProductCommandHandlerTests
   {
     using var db = InMemoryDbContextFactory.Create();
     var handler = new DeleteCategoryCommandHandler(db);
+    
     var categoryId = Guid.NewGuid();
-    Category category = new Category(categoryId, "Electronics");
+    var category = new Category(categoryId, "Electronics");
+    db.Categories.Add(category);
+    await db.SaveChangesAsync();
+
     var command = new DeleteCategoryCommand(categoryId);
 
     var result = await handler.Handle(command, CancellationToken.None);

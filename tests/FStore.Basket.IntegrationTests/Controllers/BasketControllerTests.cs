@@ -87,10 +87,11 @@ public class BasketControllerTests : IClassFixture<BasketApiFactory>
   {
     var userId = Guid.NewGuid();
     await _client.PostAsJsonAsync("/api/basket",
-    new CreateBasketCommand(userId, new List<BasketItemDto>
-    {
-      new(Guid.NewGuid(), "Laptop", 1499.99m, 1)
-    }));
+      new CreateBasketCommand(userId, new List<BasketItemDto>
+      {
+        new(Guid.NewGuid(), "Laptop", 1499.99m, 1)
+      })
+    );
 
     var deleteResponse = await _client.DeleteAsync($"/api/basket/{userId}");
     deleteResponse.StatusCode.Should().Be(HttpStatusCode.NoContent);

@@ -29,9 +29,9 @@ public class ProductsController : ControllerBase
   [HttpPost]
   public async Task<IActionResult> Create([FromBody] CreateProductCommand command)
   {
-    var id = await _mediator.Send(command);
+    var product = await _mediator.Send(command);
 
-    return CreatedAtAction(nameof(GetById), new { id }, id);
+    return CreatedAtAction(nameof(GetById), new { id = product.Id }, product);
   }
   [HttpPut("{id:guid}")]
   public async Task<IActionResult> Update(Guid id, [FromBody] UpdateProductCommand command)

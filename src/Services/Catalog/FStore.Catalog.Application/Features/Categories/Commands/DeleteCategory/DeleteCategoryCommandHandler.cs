@@ -1,4 +1,5 @@
 using FStore.Catalog.Infrastructure.Data;
+using FStore.Common.Exceptions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,7 +17,7 @@ public class DeleteCategoryCommandHandler : IRequestHandler<DeleteCategoryComman
     var hasProducts = await _context.Products.AnyAsync(p => p.CategoryId == request.Id, ct);
     if (hasProducts)
     {
-      throw new InvalidOperationException("Cannot delete a category that still has products.");
+      throw new AppException("Cannot delete a category that still has products.");
     }
 
     _context.Categories.Remove(category);

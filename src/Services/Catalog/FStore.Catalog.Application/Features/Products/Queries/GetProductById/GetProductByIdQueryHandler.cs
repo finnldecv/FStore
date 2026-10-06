@@ -26,8 +26,7 @@ public class GetProductByIdQueryHandler : IRequestHandler<GetProductByIdQuery, P
         p.Price.Amount,
         p.Price.Currency,
         p.StockQuantity,
-        p.CategoryId,
-        p.Category != null ? p.Category.Name : string.Empty
+        p.CategoryId
       )).FirstOrDefaultAsync(ct);
   }
 }

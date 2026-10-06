@@ -1,6 +1,5 @@
 using System.Net;
 using System.Text.Json;
-using System.Threading.Tasks.Dataflow;
 using FStore.Common.Exceptions;
 using Microsoft.AspNetCore.Http;
 using FluentValidation;
@@ -11,6 +10,7 @@ public class ExceptionMiddleware
 {
   private readonly RequestDelegate _next;
   public ExceptionMiddleware(RequestDelegate next) => _next = next;
+
   public async Task InvokeAsync(HttpContext context)
   {
     try
@@ -29,12 +29,19 @@ public class ExceptionMiddleware
     {
       context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
       context.Response.ContentType = "application/json";
-      var errors = ex.Errors.Select(e => new { field = e.PropertyName, error = e.ErrorMessage });
+
+      var errors = ex.Errors.Select(e => new
+      {
+        field = e.PropertyName,
+        error = e.ErrorMessage
+      });
+
       await context.Response.WriteAsJsonAsync(new { errors });
     }
     catch (Exception ex)
     {
-      await WriteError(context, HttpStatusCode.InternalServerError, ex.Message);
+      var detail = BuildExceptionDetail(ex);
+      await WriteError(context, HttpStatusCode.InternalServerError, detail);
     }
   }
 
@@ -44,5 +51,17 @@ public class ExceptionMiddleware
     context.Response.StatusCode = (int)code;
     var payload = JsonSerializer.Serialize(new { error = message });
     await context.Response.WriteAsync(payload);
+  }
+
+  private static string BuildExceptionDetail(Exception ex)
+  {
+    var messages = new List<string>();
+    var current = ex;
+    while (current is not null)
+    {
+      messages.Add($"{current.GetType().Name}: {current.Message}");
+      current = current.InnerException;
+    }
+    return string.Join(" → ", messages);
   }
 }

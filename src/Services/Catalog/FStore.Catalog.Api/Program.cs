@@ -22,11 +22,24 @@ builder.Services.AddScoped<IEventBus, MassTransitEventBus>();
 
 builder.Services.AddMassTransit(x =>
 {
-  x.UsingRabbitMq((context, cfg) =>
+  x.AddConsumers(typeof(Program).Assembly);
+
+  if (builder.Environment.IsEnvironment("Testing") ||
+  Environment.GetEnvironmentVariable("USE_IN_MEMORY_MASSTRANSIT") == "true")
   {
-    cfg.Host(builder.Configuration.GetConnectionString("RabbitMq") ?? "localhost");
-    cfg.ConfigureEndpoints(context);
-  });
+    x.UsingInMemory((context, cfg) =>
+    {
+      cfg.ConfigureEndpoints(context);
+    });
+  }
+  else
+  {
+    x.UsingRabbitMq((context, cfg) =>
+      {
+        cfg.Host(builder.Configuration.GetConnectionString("RabbitMq") ?? "localhost");
+        cfg.ConfigureEndpoints(context);
+      });
+  }
 });
 
 var app = builder.Build();

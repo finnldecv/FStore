@@ -3,6 +3,7 @@ using FStore.Catalog.Application.Features.Categories.Commands.DeleteCategory;
 using FStore.Catalog.Application.Features.Categories.Commands.UpdateCategory;
 using FStore.Catalog.Application.Features.Categories.Queries.GetCategories;
 using FStore.Catalog.Application.Features.Categories.Queries.GetCategoryById;
+using FStore.Catalog.Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -36,8 +37,8 @@ public class CategoriesController : ControllerBase
   [HttpPost]
   public async Task<IActionResult> Create([FromBody] CreateCategoryCommand command)
   {
-    var id = await _mediator.Send(command);
-    return CreatedAtAction(nameof(GetById), new { id }, id);
+    var category = await _mediator.Send(command);
+    return CreatedAtAction(nameof(GetById), new { id = category.Id }, category);
   }
 
   [HttpPut("{id:guid}")]

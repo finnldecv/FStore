@@ -1,3 +1,5 @@
+using FStore.Catalog.Domain.ValueObjects;
+
 namespace FStore.Catalog.Application.Features.Products.DTOs;
 
 public record ProductDto(
@@ -7,6 +9,5 @@ public record ProductDto(
   decimal Price,
   string Currency,
   int StockQuantity,
-  Guid CategoryId,
-  string CategoryName
+  Guid CategoryId
 );

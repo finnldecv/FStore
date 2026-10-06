@@ -23,9 +23,13 @@ public class UpdateCategoryCommandHandlerTests
   {
     using var db = InMemoryDbContextFactory.Create();
     var handler = new UpdateCategoryCommandHandler(db);
+    
     var categoryId = Guid.NewGuid();
-    Category category = new Category(categoryId, "Electronics");
-    var command = new UpdateCategoryCommand(categoryId, Name: "Electronics");
+    var category = new Category(categoryId, "Electronics");
+    db.Categories.Add(category);
+    await db.SaveChangesAsync();
+
+    var command = new UpdateCategoryCommand(categoryId, "X");
 
     var result = await handler.Handle(command, CancellationToken.None);
     result.Should().BeTrue();

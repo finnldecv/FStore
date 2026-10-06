@@ -1,5 +1,6 @@
+using FStore.Catalog.Application.Features.Categories.DTOs;
 using MediatR;
 
 namespace FStore.Catalog.Application.Features.Categories.Commands.CreateCategory;
 
-public record CreateCategoryCommand(string Name) : IRequest<Guid>;
+public record CreateCategoryCommand(string Name) : IRequest<CategoryDto>;

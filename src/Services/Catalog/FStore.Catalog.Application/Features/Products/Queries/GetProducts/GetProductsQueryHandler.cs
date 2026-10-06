@@ -17,7 +17,7 @@ public class GetProductsQueryHandler : IRequestHandler<GetProductsQuery, List<Pr
       (
         p.Id, p.Name, p.Description,
         p.Price.Amount, p.Price.Currency,
-        p.StockQuantity, p.CategoryId, p.Category != null ? p.Category.Name : string.Empty
+        p.StockQuantity, p.CategoryId
       ))
       .ToListAsync(ct);
   }

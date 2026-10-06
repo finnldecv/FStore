@@ -1,3 +1,4 @@
+using FStore.Catalog.Application.Features.Products.DTOs;
 using FStore.Catalog.Domain.Entities;
 using FStore.Catalog.Domain.ValueObjects;
 using FStore.Catalog.Infrastructure.Data;
@@ -5,11 +6,11 @@ using MediatR;
 
 namespace FStore.Catalog.Application.Features.Products.Commands.CreateProduct;
 
-public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, Guid>
+public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, ProductDto>
 {
   private readonly CatalogDbContext _context;
   public CreateProductCommandHandler(CatalogDbContext context) => _context = context;
-  public async Task<Guid> Handle(CreateProductCommand request, CancellationToken ct)
+  public async Task<ProductDto> Handle(CreateProductCommand request, CancellationToken ct)
   {
     var product = new Product
     {
@@ -22,6 +23,14 @@ public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand,
 
     _context.Products.Add(product);
     await _context.SaveChangesAsync(ct);
-    return product.Id;
+    return new ProductDto(
+      product.Id,
+      product.Name,
+      product.Description,
+      product.Price.Amount,
+      product.Price.Currency,
+      product.StockQuantity,
+      product.CategoryId
+      );
   }
 }

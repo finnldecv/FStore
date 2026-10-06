@@ -41,7 +41,7 @@ public class GetBasketQueryHandlerTests
     var repository = Substitute.For<IBasketRepository>();
     var userId = Guid.NewGuid();
     var handler = new GetBasketQueryHandler(repository);
-    var result = handler.Handle(new GetBasketQuery(userId), CancellationToken.None);
+    var result = await handler.Handle(new GetBasketQuery(userId), CancellationToken.None);
     result.Should().BeNull();
   }
 }
