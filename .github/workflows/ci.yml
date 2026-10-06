@@ -17,32 +17,28 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
 
-    defaults:
-      run:
-        working-directory: .
-
     steps:
-      - name: List root files
-        run: ls -la
-
-      - name: Restore dependencies
-        run: dotnet restore FStore/FStore.slnx
-
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup .NET ${{ env.DOTNET_VERSION }}
+      - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
-                
+
+      - name: List root files
+        run: ls -la
+
+      - name: Find all solutions
+        run: find . -name "*.sln" -not -path "./node_modules/*"
+
       - name: Restore dependencies
-        run: dotnet restore FStore/FStore.slnx
+        run: dotnet restore FStore.sln
 
       - name: Build
-        run: dotnet build FStore/FStore.slnx --no-restore --configuration Release
+        run: dotnet build FStore.sln --no-restore --configuration Release
 
-      - name: Run unit tests
+      - name: Run Catalog unit tests
         run: >
           dotnet test tests/FStore.Catalog.UnitTests/FStore.Catalog.UnitTests.csproj
           --no-build --configuration Release --verbosity normal
