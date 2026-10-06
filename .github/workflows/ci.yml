@@ -22,7 +22,7 @@ jobs:
         run: ls -la
 
       - name: Restore dependencies
-        run: dotnet restore FStore.sln
+        run: dotnet restore FStore.slnx
 
       - name: Checkout
         uses: actions/checkout@v4
