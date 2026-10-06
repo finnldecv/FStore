@@ -1,0 +1,65 @@
+# ─── .NET ────────────────────────────────────────────────
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+[Ll]og/
+[Ll]ogs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vs/
+.vscode/
+*.rsuser
+
+# Rider
+.idea/
+*.sln.iml
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+!packages/build/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# ─── Node / React ────────────────────────────────────────
+node_modules/
+dist/
+build/
+.vite/
+*.local
+.eslintcache
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# ─── Tests ───────────────────────────────────────────────
+[Tt]est[Rr]esult*/
+*.trx
+*.coverage
+*.coveragexml
+coverage/
+
+# ─── Docker ──────────────────────────────────────────────
+# Keep docker-compose files tracked, ignore local overrides
+docker-compose.override.local.yml
+
+# ─── OS Files ────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ─── IDE User Files ──────────────────────────────────────
+*.DotSettings.user
+_ReSharper*/
+*.[Rr]e[Ss]harper
