@@ -23,7 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Services\Basket\FStore.Basket.Infrastructure\FStore.Basket.Infrastructure.csproj" />
-    <ProjectReference Include="..\..\src\Services\Basket\FStore.Basket.api\FStore.Basket.Api.csproj" />
+    <ProjectReference Include="..\..\src\Services\Basket\FStore.Basket.Api\FStore.Basket.Api.csproj" />
   </ItemGroup>
 
 </Project>
