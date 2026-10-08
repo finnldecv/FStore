@@ -9,7 +9,6 @@ services:
       - "1433:1433"
     volumes:
       - catalog_data:/var/opt/mssql
-
   basketdb:
     image: redis:7-alpine
     ports:
@@ -25,6 +24,20 @@ services:
     environment:
       RABBITMQ_DEFAULT_USER: guest
       RABBITMQ_DEFAULT_PASS: guest
+
+  catalog-api:
+    build:
+      context: .
+      dockerfile: src/Services/Catalog/FStore.Catalog.Api/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings_CatalogDb=Server=catalogdb,1433;Database=FStore_Catalog:User Id=sa;Password=FStore_2026!;TrustServerCertificate=True;
+      - ConnectionStrings_RabbitMq=rabbitmq://guest:guest@rabbitmq:5672
+    depends_on:
+      - catalogdb
+      - rabbitmq
+    ports:
+      - "5001:8000"
 
 volumes:
   catalog_data:
