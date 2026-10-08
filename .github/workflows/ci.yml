@@ -32,39 +32,6 @@ jobs:
       - name: Find all solutions
         run: find . -name "*.sln" -not -path "./node_modules/*"
 
-      - name: Debug — list actual files
-        run: |
-          echo "=== src directory ==="
-          ls -la src/
-          echo "=== src/BuildingBlocks ==="
-          ls -la src/BuildingBlocks/ || echo "MISSING"
-          echo "=== All .csproj ==="
-          find . -name "*.csproj" -not -path "*/obj/*" -not -path "*/bin/*"
-          echo "=== .sln references ==="
-          grep -i "BuildingBlocks" FStore.slnx
-
-      - name: Debug — check exact paths
-        run: |
-          echo "=== Files in src/BuildingBlocks ==="
-          ls -la src/BuildingBlocks/
-
-          echo ""
-          echo "=== Contents of FStore.Common folder ==="
-          ls -la src/BuildingBlocks/FStore.Common/
-
-          echo ""
-          echo "=== Contents of FStore.EventBus folder ==="
-          ls -la src/BuildingBlocks/FStore.EventBus/
-
-          echo ""
-          echo "=== .sln references (with quotes to show exactly) ==="
-          grep -i "BuildingBlocks" FStore.slnx
-
-          echo ""
-          echo "=== Test access with exact path from .sln ==="
-          test -f src/BuildingBlocks/FStore.Common/FStore.Common.csproj && echo "FOUND" || echo "NOT FOUND"
-          test -f src/BuildingBlocks/FStore.EventBus/FStore.EventBus.csproj && echo "FOUND" || echo "NOT FOUND"
-
       - name: Restore all projects
         run: |
           for proj in $(find . -name "*.csproj" -not -path "*/obj/*" -not -path "*/bin/*"); do
@@ -98,3 +65,20 @@ jobs:
         run: >
           dotnet test tests/FStore.Basket.IntegrationTests/FStore.Basket.IntegrationTests.csproj
           --no-build --configuration Release --verbosity normal
+
+      - name: Log in to GHCR
+        if: github.ref == 'refs/heads/master'
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push Catalog API
+        if: github.ref == 'refs/heads/master'
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: src/Services/Catalog/FStore.Catalog.Api/Dockerfile
+          push: true
+          tags: ghcr.io/finnldecv/fstore-catalog-api:${{ github.sha }},ghcr.io/finnldecv/fstore-catalog-api:latest
