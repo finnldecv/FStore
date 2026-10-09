@@ -110,13 +110,14 @@ jobs:
             ghcr.io/finnldecv/fstore-basket-api:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          
+
       - name: Build ApiGateway image
+        if: github.ref == 'refs/heads/master'
         uses: docker/build-push-action@v6
         with:
           context: .
           file: src/Gateways/FStore.ApiGateway/Dockerfile
-          push: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+          push: true
           tags: |
             ghcr.io/finnldecv/fstore-apigateway:${{ github.sha }}
             ghcr.io/finnldecv/fstore-apigateway:latest

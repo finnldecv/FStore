@@ -24,6 +24,8 @@ services:
     environment:
       RABBITMQ_DEFAULT_USER: guest
       RABBITMQ_DEFAULT_PASS: guest
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
 
   catalog-api:
     build:
@@ -72,3 +74,4 @@ services:
 volumes:
   catalog_data:
   basket_data:
+  rabbitmq_data:
