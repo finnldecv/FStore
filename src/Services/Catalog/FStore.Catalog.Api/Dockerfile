@@ -15,8 +15,12 @@ WORKDIR "/src/src/Services/Catalog/FStore.Catalog.Api"
 RUN dotnet publish "FStore.Catalog.Api.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM mcr.microsoft.com/dotnet/aspnet:10.0.203 AS runtime
+
 WORKDIR /app
 COPY --from=build /app/publish .
+
 EXPOSE 8000
+
 ENV ASPNETCORE_URLS=HTTP://+:8000
+
 ENTRYPOINT ["dotnet", "FStore.Catalog.Api.dll"]
