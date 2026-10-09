@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:10.0.203 AS build
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /src
 
 COPY ["src/Services/Catalog/FStore.Catalog.Api/FStore.Catalog.Api.csproj", "src/Services/Catalog/FStore.Catalog.Api/"]
@@ -14,7 +14,7 @@ COPY . .
 WORKDIR "/src/src/Services/Catalog/FStore.Catalog.Api"
 RUN dotnet publish "FStore.Catalog.Api.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
-FROM mcr.microsoft.com/dotnet/aspnet:10.0.203 AS runtime
+FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS runtime
 
 WORKDIR /app
 COPY --from=build /app/publish .

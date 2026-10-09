@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:10.0.203 AS build
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /src
 
 COPY ["src/Services/Basket/FStore.Basket.Api/FStore.Basket.Api.csproj", "src/Services/Basket/FStore.Basket.Api/"]
@@ -14,7 +14,7 @@ COPY . .
 WORKDIR "/src/src/Services/Basket/FStore.Basket.Api"
 RUN dotnet publish "FStore.Basket.Api.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
-FROM mcr.microsoft.com/dotnet/aspnet:10.0.203 AS runtime
+FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS runtime
 WORKDIR /app
 COPY --from=build /app/publish .
 

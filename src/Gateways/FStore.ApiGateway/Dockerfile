@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:10.0.203 AS build
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /src
 
 COPY ["src/Gateways/FStore.ApiGateway/FStore.ApiGateway.csproj", "src/Gateways/FStore.ApiGateway/"]
