@@ -20,6 +20,12 @@
     <Project Path="src/Services/Catalog/FStore.Catalog.Domain/FStore.Catalog.Domain.csproj" />
     <Project Path="src/Services/Catalog/FStore.Catalog.Infrastructure/FStore.Catalog.Infrastructure.csproj" />
   </Folder>
+  <Folder Name="/src/Services/Order/">
+    <Project Path="src/Services/Order/FStore.Order.Api/FStore.Order.Api.csproj" />
+    <Project Path="src/Services/Order/FStore.Order.Application/FStore.Order.Application.csproj" />
+    <Project Path="src/Services/Order/FStore.Order.Domain/FStore.Order.Domain.csproj" />
+    <Project Path="src/Services/Order/FStore.Order.Infrastructure/FStore.Order.Infrastructure.csproj" />
+  </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/FStore.Basket.IntegrationTests/FStore.Basket.IntegrationTests.csproj" />
     <Project Path="tests/FStore.Basket.UnitTests/FStore.Basket.UnitTests.csproj" />
