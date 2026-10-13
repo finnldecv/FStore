@@ -127,3 +127,15 @@ jobs:
             ghcr.io/finnldecv/fstore-apigateway:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
+      - name: Build Order API image
+        if: github.ref == 'refs/heads/master'
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: src/Services/Order/FStore.Order.Api/Dockerfile
+          push: true
+          tags: |
+            ghcr.io/finnldecv/fstore-order-api:${{ github.sha }}
+            ghcr.io/finnldecv/fstore-order-api:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
