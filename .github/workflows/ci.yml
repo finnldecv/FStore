@@ -66,6 +66,15 @@ jobs:
           dotnet test tests/FStore.Basket.IntegrationTests/FStore.Basket.IntegrationTests.csproj
           --no-build --configuration Release --verbosity normal
 
+      - name: Run Order unit tests
+        run: >
+          dotnet test tests/FStore.Order.UnitTests/FStore.Order.UnitTests.csproj 
+          --no-build --configuration Release --verbosity normal
+
+      - name: Run Order integration tests
+        run: >
+          dotnet test tests/FStore.Order.IntegrationTests/FStore.Order.IntegrationTests.csproj 
+          --no-build --configuration Release --verbosity normal
   docker:
     name: Build Docker Images
     runs-on: ubuntu-latest
