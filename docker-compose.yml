@@ -9,12 +9,24 @@ services:
       - "1433:1433"
     volumes:
       - catalog_data:/var/opt/mssql
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P 'FStore_2026!' -C -Q 'SELECT 1' || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
   basketdb:
     image: redis:7-alpine
     ports:
       - "6379:6379"
     volumes:
       - basket_data:/data
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P 'FStore_2026!' -C -Q 'SELECT 1' || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
 
   rabbitmq:
     image: rabbitmq:3-management-alpine
@@ -26,6 +38,12 @@ services:
       RABBITMQ_DEFAULT_PASS: guest
     volumes:
       - rabbitmq_data:/var/lib/rabbitmq
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
 
   catalog-api:
     build:
@@ -68,10 +86,8 @@ services:
     ports:
       - "5003:8080"
     depends_on:
-      catalogdb:
-        condition: service_healthy
-      rabbitmq:
-        condition: service_healthy
+      - catalogdb
+      - rabbitmq
 
   apigateway:
     build:
