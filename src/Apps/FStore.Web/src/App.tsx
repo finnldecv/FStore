@@ -1,13 +1,33 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ProductList } from './features/products/components/ProductList';
+import { Container } from 'react-bootstrap';
+import { useQuery } from '@tanstack/react-query';
+import { getProducts } from './api/catalog';
 
-const queryClient = new QueryClient();
+function App() {
+  const { data: products, isLoading, error } = useQuery({
+    queryKey: ['products'],
+    queryFn: getProducts,
+  });
 
-export default function App() {
   return (
-    <QueryClientProvider client={queryClient}>
+    <Container className="py-5">
       <h1>FStore</h1>
-      <ProductList />
-    </QueryClientProvider>
-  )
+
+      {isLoading && <p>Loading products...</p>}
+      {error && <p className="text-danger">Error: {error.message}</p>}
+
+      {products && (
+        <ul>
+          {products.map((p) => (
+            <li key={p.id}>
+              {p.name} — ${p.price}
+            </li>
+          ))}
+        </ul>
+      )}
+
+      {products && products.length === 0 && <p>No products yet. Add some via the API.</p>}
+    </Container>
+  );
 }
+
+export default App;
