@@ -105,6 +105,16 @@ services:
       - catalog-api
       - basket-api
       - order-api
+  finnshop-web:
+    build:
+      context: ./src/Apps/FStore.Web
+      dockerfile: Dockerfile
+      args:
+        VITE_API_BASE_URL: http://localhost:5000
+    ports:
+      - "5173:80"
+    depends_on:
+      - apigateway  
 
 volumes:
   catalog_data:

@@ -148,3 +148,17 @@ jobs:
             ghcr.io/finnldecv/fstore-order-api:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
+      - name: Build Frontend image
+        if: github.ref == 'refs/heads/master'
+        uses: docker/build-push-action@v6
+        with:
+          context: ./src/Apps/FStore.Web
+          file: src/Apps/FStore.Web/Dockerfile
+          push: true
+          tags: |
+            ghcr.io/finnldecv/fstore-web:${{ github.sha }}
+            ghcr.io/finnldecv/fstore-web:latest
+          build-args: |
+            VITE_API_BASE_URL=http://localhost:5000
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
