@@ -1,32 +1,17 @@
-import { Container } from 'react-bootstrap';
-import { useQuery } from '@tanstack/react-query';
-import { getProducts } from './api/catalog';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { Layout } from './shared/Layout';
+import { ProductListPage } from './features/product/ProductListPage';
+import { ProductDetailPage } from './features/product/ProductDetailPage';
 
 function App() {
-  const { data: products, isLoading, error } = useQuery({
-    queryKey: ['products'],
-    queryFn: getProducts,
-  });
-
   return (
-    <Container className="py-5">
-      <h1>FStore</h1>
-
-      {isLoading && <p>Loading products...</p>}
-      {error && <p className="text-danger">Error: {error.message}</p>}
-
-      {products && (
-        <ul>
-          {products.map((p) => (
-            <li key={p.id}>
-              {p.name} — ${p.price}
-            </li>
-          ))}
-        </ul>
-      )}
-
-      {products && products.length === 0 && <p>No products yet. Add some via the API.</p>}
-    </Container>
+    <Layout>
+      <Routes>
+        <Route path="/" element={<ProductListPage />} />
+        <Route path="/products/:id" element={<ProductDetailPage />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </Layout>
   );
 }
 
