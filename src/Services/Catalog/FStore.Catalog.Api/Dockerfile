@@ -22,5 +22,6 @@ COPY --from=build /app/publish .
 EXPOSE 8000
 
 ENV ASPNETCORE_URLS=HTTP://+:8000
+ENV ASPNETCORE_ENVIRONMENT=Production
 
 ENTRYPOINT ["dotnet", "FStore.Catalog.Api.dll"]

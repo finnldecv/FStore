@@ -18,4 +18,4 @@ EXPOSE 8080
 ENV ASPNETCORE_URLS=HTTP://+:8080
 ENV ASPNETCORE_ENVIRONMENT=Production
 
-ENTRYPOINT ["dotnet", "FStore.Basket.Api.dll"]
+ENTRYPOINT ["dotnet", "FStore.ApiGateway.dll"]
