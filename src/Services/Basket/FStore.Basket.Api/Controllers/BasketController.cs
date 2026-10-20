@@ -1,3 +1,4 @@
+using FStore.Basket.Application.Features.Baskets.Commands.CheckoutBasket;
 using FStore.Basket.Application.Features.Baskets.Commands.CreateBasket;
 using FStore.Basket.Application.Features.Baskets.Commands.DeleteBasket;
 using FStore.Basket.Application.Features.Baskets.Commands.UpdateBasket;
@@ -45,5 +46,16 @@ public class BasketController : ControllerBase
   {
     var deleted = await _mediator.Send(new DeleteBasketCommand(userId));
     return deleted ? NoContent() : NotFound();
+  }
+
+  [HttpPost("checkout")]
+  public async Task<IActionResult> Checkout([FromBody] CheckoutBasketCommand command)
+  {
+    var success = await _mediator.Send(command);
+
+    if (!success)
+      return BadRequest("Cannot checkout: Basket is empty or not found.");
+
+    return Ok(new { message = "Checkout successful. Order is being processed." });
   }
 }
