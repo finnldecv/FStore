@@ -7,15 +7,40 @@ namespace FStore.Basket.Application.Consumers;
 
 public class ProductDeletedConsumer : IConsumer<ProductDeletedEvent>
 {
-  private readonly ILogger<ProductDeletedEvent> _logger;
+  private readonly IBasketRepository _repository;
+  private readonly ILogger<ProductDeletedConsumer> _logger;
 
-  public ProductDeletedConsumer(ILogger<ProductDeletedEvent> logger)
+  public ProductDeletedConsumer(
+      IBasketRepository repository,
+      ILogger<ProductDeletedConsumer> logger)
   {
+    _repository = repository;
     _logger = logger;
   }
-  public Task Consume(ConsumeContext<ProductDeletedEvent> context)
+
+  public async Task Consume(ConsumeContext<ProductDeletedEvent> context)
   {
-    _logger.LogWarning("Product {ProductId} was deleted from catalog", context.Message.ProductId);
-    return Task.CompletedTask;
+    var productId = context.Message.ProductId;
+
+    _logger.LogWarning("Product {ProductId} was deleted. Cleaning up carts.", productId);
+
+    var affectedUserIds = await _repository.GetUserIdsByProductAsync(productId);
+
+    foreach (var userId in affectedUserIds)
+    {
+      var cart = await _repository.GetBasketAsync(userId);
+      if (cart is null) continue;
+
+      var itemsBefore = cart.Items.Count;
+      cart.Items = cart.Items
+          .Where(i => i.ProductId != productId)
+          .ToList();
+
+      if (cart.Items.Count < itemsBefore)
+      {
+        await _repository.SaveBasketAsync(cart);
+        _logger.LogInformation("Removed deleted product from user {UserId}'s cart.", userId);
+      }
+    }
   }
 }
