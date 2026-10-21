@@ -68,7 +68,7 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ASPNETCORE_URLS: http://+:8080
-      ConnectionStrings_BasketDb: "basketdb:6379"
+      ConnectionStrings_BasketDb: "basketdb:6379,abortConnect=false"
       ConnectionStrings_RabbitMq: "amqp://guest:guest@rabbitmq:5672"
     ports:
       - "5002:8080"
