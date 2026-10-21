@@ -1,0 +1,7 @@
+{
+  "name": "Laptop Pro",
+  "description": "High performance laptop",
+  "price": 1499.99,
+  "stockQuantity": 10,
+  "categoryId": "7cb349b2-35a4-4cc3-929d-743996405613"
+}

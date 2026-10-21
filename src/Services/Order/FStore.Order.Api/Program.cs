@@ -19,34 +19,45 @@ builder.Services.AddScoped<IEventBus, MassTransitEventBus>();
 
 builder.Services.AddMassTransit(x =>
 {
-    x.AddConsumer<BasketCheckoutConsumer>();
-    x.AddConsumer<StockReservationFailedConsumer>();
+  x.AddConsumer<BasketCheckoutConsumer>();
+  x.AddConsumer<StockReservationFailedConsumer>();
 
-    if (builder.Environment.IsEnvironment("Testing"))
+  if (builder.Environment.IsEnvironment("Testing"))
+  {
+    x.UsingInMemory((context, cfg) => cfg.ConfigureEndpoints(context));
+  }
+  else
+  {
+    x.UsingRabbitMq((context, cfg) =>
     {
-        x.UsingInMemory((context, cfg) => cfg.ConfigureEndpoints(context));
-    }
-    else
-    {
-        x.UsingRabbitMq((context, cfg) =>
-        {
-            cfg.Host(builder.Configuration.GetConnectionString("RabbitMq") ?? "localhost");
-            cfg.ConfigureEndpoints(context);
-        });
-    }
+      var connectionString = builder.Configuration.GetConnectionString("RabbitMq");
+
+      if (connectionString != null && connectionString.StartsWith("rabbitmq://"))
+      {
+        var uri = new Uri(connectionString);
+        cfg.Host(uri);
+      }
+      else
+      {
+        cfg.Host(connectionString ?? "localhost");
+      }
+
+      cfg.ConfigureEndpoints(context);
+    });
+  }
 });
 
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
 {
-    var db = scope.ServiceProvider.GetRequiredService<OrderDbContext>();
-    await db.Database.MigrateAsync();
+  var db = scope.ServiceProvider.GetRequiredService<OrderDbContext>();
+  await db.Database.MigrateAsync();
 }
 
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+  app.MapOpenApi();
 }
 
 app.UseMiddleware<ExceptionMiddleware>();
