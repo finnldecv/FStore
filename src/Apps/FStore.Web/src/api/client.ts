@@ -9,7 +9,7 @@ export const http = axios.create({
 
 http.interceptors.response.use(
   (response) => response,
-  (error) => { 
+  (error) => {
     if (error.response?.status === 404) {
       return Promise.reject(error);
     }
