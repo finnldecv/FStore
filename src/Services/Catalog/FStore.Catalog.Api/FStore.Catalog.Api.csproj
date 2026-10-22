@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.Security.Cryptography.Pkcs" Version="9.0.21" />
     <PackageReference Include="MassTransit" Version="8.5.10" />
     <PackageReference Include="MassTransit.RabbitMQ" Version="8.5.10" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.7" />
@@ -14,12 +15,13 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.12">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
-    </PackageReference> 
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\FStore.Catalog.Application\FStore.Catalog.Application.csproj" />
-    <ProjectReference Include="..\FStore.Catalog.Infrastructure\FStore.Catalog.Infrastructure.csproj" />
+    <ProjectReference
+      Include="..\FStore.Catalog.Infrastructure\FStore.Catalog.Infrastructure.csproj" />
     <ProjectReference Include="..\..\..\BuildingBlocks\FStore.Common\FStore.Common.csproj" />
     <ProjectReference Include="..\..\..\BuildingBlocks\FStore.EventBus\FStore.EventBus.csproj" />
   </ItemGroup>

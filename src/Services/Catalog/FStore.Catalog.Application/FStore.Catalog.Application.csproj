@@ -3,17 +3,19 @@
   <ItemGroup>
     <ProjectReference Include="..\FStore.Catalog.Domain\FStore.Catalog.Domain.csproj" />
     <ProjectReference Include="..\..\..\BuildingBlocks\FStore.EventBus\FStore.EventBus.csproj" />
-    <ProjectReference Include="..\FStore.Catalog.Infrastructure\FStore.Catalog.Infrastructure.csproj" />
+    <ProjectReference
+      Include="..\FStore.Catalog.Infrastructure\FStore.Catalog.Infrastructure.csproj" />
     <ProjectReference Include="..\..\..\BuildingBlocks\FStore.Common\FStore.Common.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.Security.Cryptography.Pkcs" Version="9.0.21" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.1.1" />
     <PackageReference Include="MassTransit" Version="8.5.10" />
     <PackageReference Include="MassTransit.RabbitMQ" Version="8.5.10" />
     <PackageReference Include="MediatR" Version="11.1.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
-  </ItemGroup> 
+  </ItemGroup>
 
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
