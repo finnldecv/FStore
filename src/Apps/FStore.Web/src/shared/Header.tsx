@@ -24,6 +24,9 @@ export const Header = () => {
         <Navbar.Toggle />
         <Navbar.Collapse>
           <Nav className="ms-auto">
+            <Nav.Link as={Link} to="/orders">
+              Orders
+            </Nav.Link>
             <Nav.Link as={Link} to="/cart">
               Cart
               {itemCount > 0 && (
