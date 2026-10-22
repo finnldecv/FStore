@@ -53,7 +53,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
             <Button
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
               as={Link as any}
-              to={`/product/${product.id}`}
+              to={`/products/${product.id}`}
               variant='outline-secondary'
               size='sm'
               className='me-2'
