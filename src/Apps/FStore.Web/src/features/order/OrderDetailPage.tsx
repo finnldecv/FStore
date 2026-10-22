@@ -33,7 +33,7 @@ export const OrderDetailPage = () => {
 
   return (
     <Container>
-      <Button variant="link" className="ps-0 mb-3" onClick={() => navigate("/order")}>
+      <Button variant="link" className="ps-0 mb-3" onClick={() => navigate("/orders")}>
         <i className="fa-solid fa-arrow-left"></i>Back to Orders
       </Button>
 
