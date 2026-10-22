@@ -22,25 +22,35 @@ builder.Services.AddScoped<IEventBus, MassTransitEventBus>();
 
 builder.Services.AddMassTransit(x =>
 {
-  x.AddConsumer<ProductPriceChangedConsumer>();
-  x.AddConsumer<ProductDeletedConsumer>();
+  x.AddConsumers(typeof(Program).Assembly);
 
-  x.UsingRabbitMq((context, cfg) =>
+  if (builder.Environment.IsEnvironment("Testing") ||
+  Environment.GetEnvironmentVariable("USE_IN_MEMORY_MASSTRANSIT") == "true")
   {
-    var connectionString = builder.Configuration.GetConnectionString("RabbitMq");
-    
-    if (connectionString != null && connectionString.StartsWith("rabbitmq://"))
+    x.UsingInMemory((context, cfg) =>
     {
-        var uri = new Uri(connectionString);
-        cfg.Host(uri);
-    }
-    else
-    {
-        cfg.Host(connectionString ?? "localhost");
-    }
-    
-    cfg.ConfigureEndpoints(context);
-  });
+      cfg.ConfigureEndpoints(context);
+    });
+  }
+  else
+  {
+    x.UsingRabbitMq((context, cfg) =>
+      {
+        var connectionString = builder.Configuration.GetConnectionString("RabbitMq");
+
+        if (connectionString != null && connectionString.StartsWith("rabbitmq://"))
+        {
+          var uri = new Uri(connectionString);
+          cfg.Host(uri);
+        }
+        else
+        {
+          cfg.Host(connectionString ?? "amqp://guest:guest@localhost:5672");
+        }
+
+        cfg.ConfigureEndpoints(context);
+      });
+  }
 });
 
 var app = builder.Build();

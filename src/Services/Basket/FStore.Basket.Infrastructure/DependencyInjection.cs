@@ -11,10 +11,19 @@ public static class DependencyInjection
   {
     services.AddSingleton<IConnectionMultiplexer>(sp =>
     {
-      var redisConnection = configuration.GetConnectionString("BasketDb");
-      return ConnectionMultiplexer.Connect(redisConnection!);
+      var isDocker = Environment.GetEnvironmentVariable("DOTNET_RUNNING_IN_CONTAINER") == "true";
+
+      var connectionString = isDocker
+          ? "basketdb:6379"
+          : configuration.GetConnectionString("BasketDb") ?? "localhost:6379";
+      var options = ConfigurationOptions.Parse(connectionString);
+      options.AbortOnConnectFail = false;
+
+      return ConnectionMultiplexer.Connect(options);
     });
+
     services.AddScoped<IBasketRepository, RedisBasketRepository>();
+
     return services;
   }
 }

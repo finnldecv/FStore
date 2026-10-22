@@ -86,7 +86,7 @@ services:
       ASPNETCORE_ENVIRONMENT: Development
       ASPNETCORE_URLS: http://+:8080
       ConnectionStrings__OrderDb: "Server=catalogdb,1433;Database=FStore_Order;User Id=sa;Password=FStore_2026!;TrustServerCertificate=True;"
-      ConnectionStrings__RabbitMq: "amqp://guest:guest@rabbitmq:56722"
+      ConnectionStrings__RabbitMq: "amqp://guest:guest@rabbitmq:5672"
     ports:
       - "5003:8080"
     depends_on:

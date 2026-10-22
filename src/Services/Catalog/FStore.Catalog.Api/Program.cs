@@ -45,7 +45,7 @@ builder.Services.AddMassTransit(x =>
         }
         else
         {
-          cfg.Host(connectionString ?? "localhost");
+          cfg.Host(connectionString ?? "amqp://guest:guest@localhost:5672");
         }
 
         cfg.ConfigureEndpoints(context);
