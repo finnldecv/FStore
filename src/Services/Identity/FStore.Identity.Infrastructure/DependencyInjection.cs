@@ -1,4 +1,6 @@
+using FStore.Identity.Application.Services;
 using FStore.Identity.Infrastructure.Data;
+using FStore.Identity.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,6 +14,7 @@ public static class DependencyInjection
     services.AddDbContext<IdentityDbContext>(options =>
       options.UseSqlServer(configuration.GetConnectionString("IdentityDb"))
     );
+    services.AddScoped<ITokenService, TokenService>();
 
     return services;
   }

@@ -124,18 +124,6 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - name: Build ApiGateway image
-        if: github.ref == 'refs/heads/master'
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          file: src/Gateways/FStore.ApiGateway/Dockerfile
-          push: true
-          tags: |
-            ghcr.io/finnldecv/fstore-apigateway:${{ github.sha }}
-            ghcr.io/finnldecv/fstore-apigateway:latest
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
       - name: Build Order API image
         if: github.ref == 'refs/heads/master'
         uses: docker/build-push-action@v6
@@ -148,6 +136,33 @@ jobs:
             ghcr.io/finnldecv/fstore-order-api:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+      - name: Build Identity API image
+        if: github.ref == 'refs/heads/master'
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: src/Services/Identity/FStore.Identity.Api/Dockerfile
+          push: true
+          tags: |
+            ghcr.io/finnldecv/fstore-identity-api:${{ github.sha }}
+            ghcr.io/finnldecv/fstore-identity-api:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Build ApiGateway image
+        if: github.ref == 'refs/heads/master'
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: src/Gateways/FStore.ApiGateway/Dockerfile
+          push: true
+          tags: |
+            ghcr.io/finnldecv/fstore-apigateway:${{ github.sha }}
+            ghcr.io/finnldecv/fstore-apigateway:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
       - name: Build Frontend image
         if: github.ref == 'refs/heads/master'
         uses: docker/build-push-action@v6

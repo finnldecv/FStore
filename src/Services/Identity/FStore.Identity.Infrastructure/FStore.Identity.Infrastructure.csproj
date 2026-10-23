@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FStore.Identity.Domain\FStore.Identity.Domain.csproj" />
+    <ProjectReference Include="..\FStore.Identity.Application\FStore.Identity.Application.csproj" />
   </ItemGroup>
 
   <ItemGroup>
