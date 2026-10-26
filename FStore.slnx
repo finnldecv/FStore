@@ -37,6 +37,7 @@
     <Project Path="tests/FStore.Basket.UnitTests/FStore.Basket.UnitTests.csproj" />
     <Project Path="tests/FStore.Catalog.IntegrationTests/FStore.Catalog.IntegrationTests.csproj" />
     <Project Path="tests/FStore.Catalog.UnitTests/FStore.Catalog.UnitTests.csproj" />
+    <Project Path="tests/FStore.Identity.UnitTests/FStore.Identity.UnitTests.csproj" />
     <Project Path="tests/FStore.Order.IntegrationTests/FStore.Order.IntegrationTests.csproj" />
     <Project Path="tests/FStore.Order.UnitTests/FStore.Order.UnitTests.csproj" />
   </Folder>
