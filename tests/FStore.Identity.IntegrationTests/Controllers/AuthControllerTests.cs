@@ -41,7 +41,7 @@ public class AuthControllerTests : IClassFixture<IdentityApiFactory>, IAsyncLife
   [Fact]
   public async Task LoginAfterRegistrationReturnsToken()
   {
-    var regCommand = new RegisterCommand("logi@test.com", "Password123!", "Mary", "Jane");
+    var regCommand = new RegisterCommand("login@test.com", "Password123!", "Mary", "Jane");
     await _client.PostAsJsonAsync("/api/auth/register", regCommand);
 
     var loginCommand = new LoginCommand("login@test.com", "Password123!");
