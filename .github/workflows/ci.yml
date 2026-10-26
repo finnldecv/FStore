@@ -75,6 +75,16 @@ jobs:
         run: >
           dotnet test tests/FStore.Order.IntegrationTests/FStore.Order.IntegrationTests.csproj 
           --no-build --configuration Release --verbosity normal
+
+      - name: Run Identity unit tests
+        run: >
+          dotnet test tests/FStore.Identity.UnitTests/FStore.Identity.UnitTests.csproj
+          --no-build --configuration Release --verbosity normal
+
+      - name: Run Identity integration tests
+        run: >
+          dotnet test tests/FStore.Identity.IntegrationTests/FStore.Identity.IntegrationTests.csproj
+          --no-build --configuration Release --verbosity normal
   docker:
     name: Build Docker Images
     runs-on: ubuntu-latest
