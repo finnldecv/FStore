@@ -13,7 +13,7 @@ namespace FStore.Identity.IntegrationTests.Fixtures;
 
 public class IdentityApiFactory : WebApplicationFactory<Program>, IAsyncLifetime
 {
-  private readonly MsSqlContainer _dbContainer = new MsSqlBuilder("mcr.microsoft.com/mssql/server:2022-lastest")
+  private readonly MsSqlContainer _dbContainer = new MsSqlBuilder("mcr.microsoft.com/mssql/server:2022-latest")
     .WithPassword("FStore_Test_2026!")
     .Build();
 
