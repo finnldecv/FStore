@@ -3,15 +3,15 @@ import { Container, Row, Col, Card, Button, Form, Alert, Spinner } from 'react-b
 import { useNavigate, Link } from 'react-router-dom';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { http } from '../../api/client';
-import { getUserId } from '../../lib/userId';
 import { useBasket } from '../cart/hooks';
+import { useAuth } from '../auth/AuthContext';
 
 interface CheckoutResponse {
   message: string;
 }
 
 export const CheckoutPage = () => {
-  const userId = getUserId();
+  const { userId } = useAuth();
   const navigate = useNavigate();
   const queryClient = useQueryClient();
   const { data: basket, isLoading } = useBasket();
