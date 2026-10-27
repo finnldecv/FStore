@@ -17,8 +17,8 @@ export const ProductCard = ({ product }: ProductCardProps) => {
       productId: product.id,
       productName: product.name,
       price: product.price,
-      quantity: 1
-    });
+      quantity: 1,
+    })
   };
 
   const { data: category, isLoading } = useQuery({

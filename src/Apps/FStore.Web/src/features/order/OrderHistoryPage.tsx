@@ -2,14 +2,11 @@ import { Container, Table, Badge, Spinner, Alert, Card } from 'react-bootstrap';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import { getOrdersByUser } from '../../api/order';
-import { getUserId } from '../../lib/userId';
 
 export const OrderHistoryPage = () => {
-  const userId = getUserId();
-
   const { data: orders, isLoading, error } = useQuery({
-    queryKey: ['orders', userId],
-    queryFn: () => getOrdersByUser(userId),
+    queryKey: ['orders'],
+    queryFn: getOrdersByUser,
   });
 
   if (isLoading) {

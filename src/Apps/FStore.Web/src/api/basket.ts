@@ -1,3 +1,4 @@
+import { getUserIdFromToken } from './auth.ts'
 import { http } from './client';
 import { isNotFound } from './errors';
 
@@ -13,7 +14,10 @@ export interface Basket {
   items: BasketItem[];
 }
 
-export const getBasket = async (userId: string): Promise<Basket | null> => {
+export const getBasket = async (): Promise<Basket | null> => {
+  const userId = getUserIdFromToken();
+  if (!userId) return null;
+
   try {
     const { data } = await http.get<Basket>(`/basket/api/basket/${userId}`);
     return data;
@@ -23,14 +27,12 @@ export const getBasket = async (userId: string): Promise<Basket | null> => {
   }
 };
 
-export const addToBasket = async (
-  userId: string,
-  item: BasketItem
-): Promise<void> => {
-  const existing = await getBasket(userId);
+export const addToBasket = async (item: BasketItem): Promise<void> => {
+  const userId = getUserIdFromToken();
+  if (!userId) throw new Error('User not authenticated');
 
+  const existing = await getBasket();
   const items = existing?.items ?? [];
-
   const existingIndex = items.findIndex((i) => i.productId === item.productId);
 
   if (existingIndex >= 0) {
@@ -51,14 +53,17 @@ export const addToBasket = async (
   }
 };
 
-export const updateBasketItem = async (
-  userId: string,
-  items: BasketItem[]
-): Promise<void> => {
+export const updateBasketItem = async (items: BasketItem[]): Promise<void> => {
+  const userId = getUserIdFromToken();
+  if (!userId) throw new Error('User not authenticated');
+
   await http.put(`/basket/api/basket/${userId}`, { userId, items });
 };
 
-export const clearBasket = async (userId: string): Promise<void> => {
+export const clearBasket = async (): Promise<void> => {
+  const userId = getUserIdFromToken();
+  if (!userId) return;
+
   try {
     await http.delete(`/basket/api/basket/${userId}`);
   } catch (error) {

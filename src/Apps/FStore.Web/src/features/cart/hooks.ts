@@ -1,51 +1,50 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import {
-  getBasket,
-  addToBasket,
-  updateBasketItem,
-  clearBasket,
-} from '../../api/basket';
+import { getBasket, addToBasket, updateBasketItem, clearBasket } from '../../api/basket';
 import type { BasketItem } from '../../api/basket';
-import { getUserId } from '../../lib/userId';
+import { useAuth } from '../auth/AuthContext';
 
 export const useBasket = () => {
-  const userId = getUserId();
+  const { userId } = useAuth();
 
   return useQuery({
     queryKey: ['basket', userId],
-    queryFn: () => getBasket(userId)
+    queryFn: getBasket,
+    enabled: !!userId,
   });
 };
 
 export const useAddToBasket = () => {
   const queryClient = useQueryClient();
-  const userId = getUserId();
+  const { userId } = useAuth();
 
   return useMutation({
-    mutationFn: (item: BasketItem) => addToBasket(userId, item),
-    onSuccess: () =>
-      queryClient.invalidateQueries({ queryKey: ['basket', userId] })
+    mutationFn: (item: BasketItem) => addToBasket(item),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['basket', userId] });
+    },
   });
 };
 
 export const useUpdateBasket = () => {
   const queryClient = useQueryClient();
-  const userId = getUserId();
+  const { userId } = useAuth();
 
   return useMutation({
-    mutationFn: (item: BasketItem[]) => updateBasketItem(userId, item),
-    onSuccess: () =>
-      queryClient.invalidateQueries({ queryKey: ['basket', userId] })
+    mutationFn: (items: BasketItem[]) => updateBasketItem(items),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['basket', userId] });
+    },
   });
 };
 
 export const useClearBasket = () => {
   const queryClient = useQueryClient();
-  const userId = getUserId();
+  const { userId } = useAuth();
 
   return useMutation({
-    mutationFn: () => clearBasket(userId),
-    onSuccess: () =>
-      queryClient.invalidateQueries({ queryKey: ['basket', userId] })
+    mutationFn: clearBasket,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['basket', userId] });
+    },
   });
-}
+};

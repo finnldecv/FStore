@@ -1,4 +1,5 @@
 import { http } from './client';
+import { getUserIdFromToken } from './auth.ts'
 
 export interface OrderItem {
   productId: string;
@@ -24,7 +25,13 @@ export const getOrderById = async (id: string): Promise<Order> => {
   return data;
 };
 
-export const getOrdersByUser = async (userId: string): Promise<Order[]> => {
+export const getOrdersByUser = async (): Promise<Order[]> => {
+  const userId = getUserIdFromToken();
+
+  if (!userId) {
+    throw new Error('User is not authenticated');
+  }
+
   const { data } = await http.get<Order[]>(`/order/api/orders/user/${userId}`);
   return data;
 };
