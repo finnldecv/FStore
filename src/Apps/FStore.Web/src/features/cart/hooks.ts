@@ -8,7 +8,7 @@ export const useBasket = () => {
 
   return useQuery({
     queryKey: ['basket', userId],
-    queryFn: getBasket,
+    queryFn: () => getBasket(),
     enabled: !!userId,
   });
 };
