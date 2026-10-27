@@ -24,8 +24,12 @@ export const Header = () => {
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
       <Container>
-        <Navbar.Brand as={Link} to="/">🛒 FStore</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/">
+          <i className="fa-solid fa-shop me-2"></i> FStore
+        </Navbar.Brand>
+
         <Navbar.Toggle />
+
         <Navbar.Collapse>
           <Nav className="ms-auto align-items-center">
             {userId ? (
