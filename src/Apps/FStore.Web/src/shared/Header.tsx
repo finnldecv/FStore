@@ -39,7 +39,9 @@ export const Header = () => {
                   Cart {itemCount > 0 && <Badge bg="danger" pill className="ms-1">{itemCount}</Badge>}
                 </Nav.Link>
                 <span className="text-light mx-3 small">{email}</span>
-                <Button variant="outline-light" size="sm" onClick={handleLogout}>Logout</Button>
+                <Button variant="outline-light" size="sm" onClick={handleLogout}>
+                  Logout
+                </Button>
               </>
             ) : (
               <>
@@ -52,4 +54,4 @@ export const Header = () => {
       </Container>
     </Navbar>
   );
-};
+}
