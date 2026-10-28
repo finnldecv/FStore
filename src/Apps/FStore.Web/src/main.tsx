@@ -10,8 +10,8 @@ import { AuthProvider } from './features/auth/AuthContext';
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 60 * 1000,      // data is fresh for 1 minute
-      retry: 1,                  // retry failed requests once
+      staleTime: 60 * 1000,
+      retry: 1,
       refetchOnWindowFocus: false,
     },
   },
