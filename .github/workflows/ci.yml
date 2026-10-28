@@ -85,6 +85,21 @@ jobs:
         run: >
           dotnet test tests/FStore.Identity.IntegrationTests/FStore.Identity.IntegrationTests.csproj
           --no-build --configuration Release --verbosity normal
+          
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: src/Apps/FStore.Web/package-lock.json
+
+      - name: Install Frontend Dependencies
+        working-directory: src/Apps/FStore.Web
+        run: npm ci
+
+      - name: Run Frontend Tests
+        working-directory: src/Apps/FStore.Web
+        run: npm run test -- --run
   docker:
     name: Build Docker Images
     runs-on: ubuntu-latest
