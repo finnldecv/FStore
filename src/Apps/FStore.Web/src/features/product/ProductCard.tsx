@@ -66,7 +66,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
               onClick={handleAddToCard}
               disabled={!inStock || addToBasket.isPending}
             >
-              {addToBasket.isPending ? "Adding..." : "Add to Card"}
+              {addToBasket.isPending ? "Adding..." : "Add to Cart"}
             </Button>
           </div>
         </div>
