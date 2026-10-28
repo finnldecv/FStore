@@ -87,7 +87,7 @@ export const CheckoutPage = () => {
               {errorMsg && <Alert variant="danger">{errorMsg}</Alert>}
 
               <Form onSubmit={handleSubmit}>
-                <Form.Group className="mb-3">
+                <Form.Group className="mb-3" controlId="shippingAddress">
                   <Form.Label>Shipping Address</Form.Label>
                   <Form.Control
                     as="textarea"
@@ -99,7 +99,7 @@ export const CheckoutPage = () => {
                   />
                 </Form.Group>
 
-                <Form.Group className="mb-4">
+                <Form.Group className="mb-4" controlId="orderNotes">
                   <Form.Label>Order Notes (Optional)</Form.Label>
                   <Form.Control
                     as="textarea"
