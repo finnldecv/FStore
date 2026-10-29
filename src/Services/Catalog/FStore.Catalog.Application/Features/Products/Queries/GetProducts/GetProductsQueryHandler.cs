@@ -11,8 +11,17 @@ public class GetProductsQueryHandler : IRequestHandler<GetProductsQuery, List<Pr
   public GetProductsQueryHandler(CatalogDbContext context) => _context = context;
   public async Task<List<ProductDto>> Handle(GetProductsQuery request, CancellationToken ct)
   {
-    return await _context.Products
-      .AsNoTracking()
+    var query = _context.Products.AsNoTracking();
+
+    if (!string.IsNullOrWhiteSpace(request.SearchTerm))
+    {
+      var term = request.SearchTerm.ToLower();
+      query = query.Where(p =>
+        p.Name.ToLower().Contains(term) ||
+        p.Description.ToLower().Contains(term)
+      );
+    }
+    return await query
       .Select(p => new ProductDto
       (
         p.Id, p.Name, p.Description,

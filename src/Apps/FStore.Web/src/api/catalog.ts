@@ -16,8 +16,11 @@ export interface Category {
   productCount: number;
 }
 
-export const getProducts = async (): Promise<Product[]> => {
-  const { data } = await http.get<Product[]>('/catalog/api/products');
+export const getProducts = async (searchTerm?: string): Promise<Product[]> => {
+  const params = new URLSearchParams();
+  if (searchTerm) params.append('search', searchTerm)
+
+  const { data } = await http.get<Product[]>('/catalog/api/products', { params });
   return data;
 };
 

@@ -16,8 +16,8 @@ public class ProductsController : ControllerBase
   public ProductsController(IMediator mediator) => _mediator = mediator;
 
   [HttpGet]
-  public async Task<IActionResult> GetAll()
-    => Ok(await _mediator.Send(new GetProductsQuery()));
+  public async Task<IActionResult> GetAll([FromQuery] string? search)
+    => Ok(await _mediator.Send(new GetProductsQuery(search)));
 
   [HttpGet("{id:guid}")]
   public async Task<IActionResult> GetById(Guid id)

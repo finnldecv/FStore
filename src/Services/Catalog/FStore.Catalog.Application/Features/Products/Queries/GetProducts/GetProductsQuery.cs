@@ -3,4 +3,4 @@ using MediatR;
 
 namespace FStore.Catalog.Application.Features.Products.Queries.GetProducts;
 
-public record GetProductsQuery : IRequest<List<ProductDto>>;
+public record GetProductsQuery(string? SearchTerm = null) : IRequest<List<ProductDto>>;
