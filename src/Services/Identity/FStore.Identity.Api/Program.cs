@@ -5,6 +5,7 @@ using FStore.Identity.Application;
 using Microsoft.AspNetCore.Identity;
 using FStore.Common.Middleware;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.DataProtection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +15,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddOpenApi();
 
-builder.Services.AddDataProtection();
+builder.Services.AddDataProtection()
+  .PersistKeysToDbContext<IdentityDbContext>();
 
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
