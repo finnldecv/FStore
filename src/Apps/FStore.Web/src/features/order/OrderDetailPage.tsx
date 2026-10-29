@@ -96,7 +96,7 @@ export const OrderDetailPage = () => {
                 <strong className="text-primary fs-5">${order.totalAmount.toFixed(2)}</strong>
               </div>
             </Card.Body>
-          </Card>F
+          </Card>
         </Col>
       </Row>
     </Container>

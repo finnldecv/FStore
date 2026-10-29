@@ -7,6 +7,8 @@ import { CheckoutPage } from './features/order/CheckoutPage';
 import { CheckoutSuccessPage } from './features/order/CheckoutSuccessPage';
 import { OrderHistoryPage } from './features/order/OrderHistoryPage';
 import { OrderDetailPage } from './features/order/OrderDetailPage';
+import { LoginPage } from './features/auth/LoginPage';
+import { RegisterPage } from './features/auth/RegisterPage';
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
         <Route path="/checkout/success" element={<CheckoutSuccessPage />} />
         <Route path="/orders" element={<OrderHistoryPage />}></Route>
         <Route path="/orders/:id" element={<OrderDetailPage />}></Route>
+        <Route path="/register" element={<RegisterPage />}></Route>
+        <Route path="/login" element={<LoginPage />}></Route>
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Layout>
