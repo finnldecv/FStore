@@ -16,11 +16,27 @@ export interface Category {
   productCount: number;
 }
 
-export const getProducts = async (searchTerm?: string): Promise<Product[]> => {
+export interface PagedResult<T> {
+  items: T[];
+  totalCount: number;
+  pageNumber: number;
+  pageSize: number;
+  totalPages: number;
+  hasPreviousPage: boolean;
+  hasNextPage: boolean;
+}
+
+export const getProducts = async (
+  searchTerm?: string,
+  pageNumber: number = 1,
+  pageSize: number = 12
+): Promise<PagedResult<Product>> => {
   const params = new URLSearchParams();
   if (searchTerm) params.append('search', searchTerm)
+  params.append('pageNumber', pageNumber.toString());
+  params.append('pageSize', pageSize.toString());
 
-  const { data } = await http.get<Product[]>('/catalog/api/products', { params });
+  const { data } = await http.get<PagedResult<Product>>('/catalog/api/products', { params });
   return data;
 };
 
