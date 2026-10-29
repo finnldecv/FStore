@@ -8,6 +8,7 @@ using FStore.Catalog.Application.Features.Products.Commands.CreateProduct;
 using FStore.Catalog.Application.Features.Products.Commands.UpdateProduct;
 using FStore.Catalog.Application.Features.Products.DTOs;
 using FStore.Catalog.IntegrationTests.Fixtures;
+using FStore.Common.Models;
 
 namespace FStore.Catalog.IntegrationTests.Controllers;
 
@@ -38,7 +39,8 @@ public class ProductsControllerTests : IClassFixture<CatalogApiFactory>, IAsyncL
     var response = await _client.GetAsync("/api/products");
     response.StatusCode.Should().Be(HttpStatusCode.OK);
 
-    var products = await response.Content.ReadFromJsonAsync<List<ProductDto>>();
+    var result = await response.Content.ReadFromJsonAsync<PagedResult<ProductDto>>();
+    var products = result!.Items;
     products.Should().NotBeNull();
     products!.Should().BeEmpty();
   }
