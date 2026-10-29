@@ -45,7 +45,7 @@ export const ProductListPage = () => {
             type='text'
             placeholder='Search products...'
             value={searchTerm}
-            onChange={() => handleSearchChange} />
+            onChange={handleSearchChange} />
         </InputGroup>
         <span className='text-muted'>
           {data?.items.length ?? 0} {data?.items.length === 1 ? 'item' : 'items'}
