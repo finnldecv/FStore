@@ -28,11 +28,17 @@ export interface PagedResult<T> {
 
 export const getProducts = async (
   searchTerm?: string,
+  categoryId?: string,
+  minPrice?: number,
+  maxPrice?: number,
   pageNumber: number = 1,
   pageSize: number = 12
 ): Promise<PagedResult<Product>> => {
   const params = new URLSearchParams();
   if (searchTerm) params.append('search', searchTerm)
+  if (categoryId) params.append('categoryId', categoryId);
+  if (minPrice != undefined) params.append('minPrice', minPrice.toString());
+  if (maxPrice != undefined) params.append('maxPrice', maxPrice.toString());
   params.append('pageNumber', pageNumber.toString());
   params.append('pageSize', pageSize.toString());
 

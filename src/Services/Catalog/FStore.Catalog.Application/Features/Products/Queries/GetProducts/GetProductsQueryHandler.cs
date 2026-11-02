@@ -23,6 +23,21 @@ public class GetProductsQueryHandler : IRequestHandler<GetProductsQuery, PagedRe
       );
     }
 
+    if (request.CategoryId.HasValue && request.CategoryId.Value != Guid.Empty)
+    {
+      query = query.Where(p => p.CategoryId == request.CategoryId.Value);
+    }
+
+    if (request.MinPrice.HasValue)
+    {
+      query = query.Where(p => p.Price.Amount >= request.MinPrice.Value);
+    }
+
+    if (request.MaxPrice.HasValue)
+    {
+      query = query.Where(p => p.Price.Amount <= request.MaxPrice.Value);
+    }
+
     var totalCount = await query.CountAsync(ct);
 
     var items = await query

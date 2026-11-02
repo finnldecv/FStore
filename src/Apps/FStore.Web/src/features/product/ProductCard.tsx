@@ -1,6 +1,6 @@
 import { Card, Button, Badge } from 'react-bootstrap';
 import { useQuery } from '@tanstack/react-query';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import type { Product } from '../../api/catalog';
 import { useAddToBasket } from '../cart/hooks';
 import { getCategoryById } from '../../api/catalog';
@@ -11,6 +11,7 @@ interface ProductCardProps {
 
 export const ProductCard = ({ product }: ProductCardProps) => {
   const addToBasket = useAddToBasket();
+  const navigate = useNavigate();
 
   const handleAddToCard = () => {
     addToBasket.mutate({
@@ -51,9 +52,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
           </span>
           <div>
             <Button
-              // eslint-disable-next-line @typescript-eslint/no-explicit-any
-              as={Link as any}
-              to={`/products/${product.id}`}
+              onClick={() => navigate(`/products/${product.id}`)}
               variant='outline-secondary'
               size='sm'
               className='me-2'
