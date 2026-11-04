@@ -107,6 +107,8 @@ services:
       JwtSettings__Key: "${JWT_SECRET_KEY}"
       JwtSettings__Issuer: "FStore.Identity"
       JwtSettings__Audience: "FStore.Client"
+      AdminSettings__Email: ${ADMIN_EMAIL}
+      AdminSettings__Password: ${ADMIN_PASSWORD}
     ports:
       - "5004:8080"
     depends_on:
