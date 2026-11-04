@@ -23,6 +23,6 @@ public class LoginCommandHandler : IRequestHandler<LoginCommand, string>
       throw new Exception("Invalid email or password");
     }
 
-    return _tokenService.GenerateToken(user);
+    return await _tokenService.GenerateToken(user);
   }
 }
