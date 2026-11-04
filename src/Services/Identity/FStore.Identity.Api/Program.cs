@@ -45,7 +45,7 @@ using (var scope = app.Services.CreateScope())
   var adminEmail = builder.Configuration["AdminSetting:Password"];
   var adminPassword = builder.Configuration["AdminSetting:Password"];
 
-  if (!app.Environment.IsEnvironment("Testing"))
+  if (app.Environment.IsEnvironment("Testing"))
   {
     {
       if (string.IsNullOrEmpty(adminEmail)) adminEmail = "admin@fstore.com";
