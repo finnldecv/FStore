@@ -9,6 +9,9 @@ using Respawn.Graph;
 using Testcontainers.MsSql;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.AspNetCore.Authentication;
+using FStore.Catalog.IntegrationTests.Auth;
 
 namespace FStore.Catalog.IntegrationTests.Fixtures;
 
@@ -58,6 +61,16 @@ public class CatalogApiFactory : WebApplicationFactory<Program>, IAsyncLifetime
 
     builder.ConfigureServices(services =>
     {
+      services.RemoveAll<AuthenticationSchemeOptions>();
+      services.RemoveAll<IAuthenticationHandlerProvider>();
+
+      services.AddAuthentication(options =>
+       {
+         options.DefaultAuthenticateScheme = "Test";
+         options.DefaultChallengeScheme = "Test";
+       })
+       .AddScheme<AuthenticationSchemeOptions, TestAuthHandler>("Test", options => { });
+
       var descriptor = services.SingleOrDefault(
         d => d.ServiceType == typeof(DbContextOptions<CatalogDbContext>)
       );
