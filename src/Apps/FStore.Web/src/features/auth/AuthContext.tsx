@@ -8,6 +8,7 @@ interface JwtPayload {
   name: string;
   exp: number;
   role?: string | string[];
+  'http://schemas.microsoft.com/ws/2008/06/identity/claims/role'?: string | string[];
 }
 
 interface AuthContextType {
@@ -49,9 +50,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       userId = decoded.sub;
       email = decoded.email;
 
-      const roles = decoded.role ? (Array.isArray(decoded.role)) ? decoded.role : [decoded.role] : [];
+      const rolesClaim = decoded.role || decoded['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
 
-      isAdmin = roles.includes('Admin');
+      if (rolesClaim) {
+        const rolesArray = Array.isArray(rolesClaim) ? rolesClaim : [rolesClaim];
+        isAdmin = rolesArray.includes('Admin');
+      }
     } catch {
       // If token is malformed, these remain null
     }
