@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Respawn;
@@ -33,7 +34,17 @@ public class IdentityApiFactory : WebApplicationFactory<Program>, IAsyncLifetime
   {
     builder.UseEnvironment("Testing");
     builder.ConfigureLogging(l => l.ClearProviders());
-
+    builder.ConfigureAppConfiguration((context, config) =>
+    {
+      config.AddInMemoryCollection(new Dictionary<string, string?>
+        {
+            {"JwtSettings:Key", "super_secret_key_that_is_at_least_32_characters_long!"},
+            {"JwtSettings:Issuer", "FStore.Identity"},
+            {"JwtSettings:Audience", "FStore.Client"},
+            {"AdminSettings:Email", "admin@test.com"},
+            {"AdminSettings:Password", "Admin123!"}
+        });
+    });
     builder.ConfigureServices(services =>
     {
       var descriptor = services.SingleOrDefault(d => d.ServiceType == typeof(DbContextOptions<IdentityDbContext>));
