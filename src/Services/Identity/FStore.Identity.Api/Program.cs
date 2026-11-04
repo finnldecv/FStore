@@ -42,8 +42,8 @@ using (var scope = app.Services.CreateScope())
   if (!await roleManager.RoleExistsAsync("Customer"))
     await roleManager.CreateAsync(new IdentityRole("Customer"));
 
-  var adminEmail = builder.Configuration["AdminSetting:Email"];
-  var adminPassword = builder.Configuration["AdminSetting:Password"];
+  var adminEmail = builder.Configuration["AdminSettings:Email"];
+  var adminPassword = builder.Configuration["AdminSettings:Password"];
 
   if (app.Environment.IsEnvironment("Testing"))
   {
