@@ -46,3 +46,4 @@ app.UseCors("Frontend");
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapReverseProxy();
+app.Run();
