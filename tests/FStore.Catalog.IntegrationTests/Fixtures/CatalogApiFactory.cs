@@ -8,6 +8,7 @@ using Respawn;
 using Respawn.Graph;
 using Testcontainers.MsSql;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Configuration;
 
 namespace FStore.Catalog.IntegrationTests.Fixtures;
 
@@ -39,6 +40,15 @@ public class CatalogApiFactory : WebApplicationFactory<Program>, IAsyncLifetime
   {
     builder.UseEnvironment("Testing");
 
+    builder.ConfigureAppConfiguration((context, config) =>
+    {
+      config.AddInMemoryCollection(new Dictionary<string, string?>
+        {
+            {"JwtSettings:Key", "super_secret_key_that_is_at_least_32_characters_long!"},
+            {"JwtSettings:Issuer", "FStore.Identity"},
+            {"JwtSettings:Audience", "FStore.Client"}
+        });
+    });
     builder.ConfigureLogging(logging =>
     {
       logging.ClearProviders();
