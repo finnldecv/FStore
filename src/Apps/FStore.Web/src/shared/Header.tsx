@@ -5,7 +5,7 @@ import { getBasket } from '../api/basket';
 import { useAuth } from '../features/auth/AuthContext';
 
 export const Header = () => {
-  const { userId, email, logout } = useAuth();
+  const { userId, email, isAdmin, logout } = useAuth();
   const navigate = useNavigate();
 
   const { data: basket } = useQuery({
@@ -34,6 +34,11 @@ export const Header = () => {
           <Nav className="ms-auto align-items-center">
             {userId ? (
               <>
+                {isAdmin && (
+                  <Nav.Link as={Link} to="/admin/products" className="text-warning">
+                    Admin Panel
+                  </Nav.Link>
+                )}
                 <Nav.Link as={Link} to="/orders">Orders</Nav.Link>
                 <Nav.Link as={Link} to="/cart">
                   Cart {itemCount > 0 && <Badge bg="danger" pill className="ms-1">{itemCount}</Badge>}

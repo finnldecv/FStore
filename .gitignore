@@ -63,3 +63,7 @@ desktop.ini
 *.DotSettings.user
 _ReSharper*/
 *.[Rr]e[Ss]harper
+
+# ─── App settings ────────────────────────────────────────
+appsettings.*.json
+!appsettings.Development.json

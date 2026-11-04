@@ -33,16 +33,35 @@ using (var scope = app.Services.CreateScope())
 {
   var db = scope.ServiceProvider.GetRequiredService<IdentityDbContext>();
   await db.Database.MigrateAsync();
-}
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-  app.MapOpenApi();
-}
+  var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+  var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
 
-// app.UseHttpsRedirection();
-app.UseMiddleware<ExceptionMiddleware>();
-app.UseAuthorization();
-app.MapControllers();
-app.Run();
+  if (!await roleManager.RoleExistsAsync("Admin"))
+    await roleManager.CreateAsync(new IdentityRole("Admin"));
+  if (!await roleManager.RoleExistsAsync("Customer"))
+    await roleManager.CreateAsync(new IdentityRole("Customer"));
+
+  var adminEmail = builder.Configuration["AdminSetting:Password"];
+  var adminPassword = builder.Configuration["AdminSetting:Password"];
+  var adminUser = await userManager.FindByEmailAsync(adminEmail!);
+  if (adminUser == null)
+  {
+    var newAdmin = new ApplicationUser { UserName = adminEmail, Email = adminEmail, FirstName = "System", LastName = "Admin" };
+    await userManager.CreateAsync(newAdmin, adminPassword!);
+    await userManager.AddToRoleAsync(newAdmin, "Admin");
+  }
+
+  // Configure the HTTP request pipeline.
+  if (app.Environment.IsDevelopment())
+  {
+    app.MapOpenApi();
+  }
+
+  // app.UseHttpsRedirection();
+  app.UseMiddleware<ExceptionMiddleware>();
+  app.UseAuthentication();
+  app.UseAuthorization();
+  app.MapControllers();
+  app.Run();
+}

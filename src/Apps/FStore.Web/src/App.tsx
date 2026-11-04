@@ -9,6 +9,7 @@ import { OrderHistoryPage } from './features/order/OrderHistoryPage';
 import { OrderDetailPage } from './features/order/OrderDetailPage';
 import { LoginPage } from './features/auth/LoginPage';
 import { RegisterPage } from './features/auth/RegisterPage';
+import { AdminProductListPage } from './features/admin/AdminProductListPage';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/orders/:id" element={<OrderDetailPage />}></Route>
         <Route path="/register" element={<RegisterPage />}></Route>
         <Route path="/login" element={<LoginPage />}></Route>
+        <Route path="/admin/products" element={<AdminProductListPage />}></Route>
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Layout>

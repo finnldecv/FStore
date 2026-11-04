@@ -4,5 +4,5 @@ namespace FStore.Identity.Application.Services;
 
 public interface ITokenService
 {
-  string GenerateToken(ApplicationUser user);
+  Task<string> GenerateToken(ApplicationUser user);
 }

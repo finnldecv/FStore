@@ -24,6 +24,10 @@ public class RegisterCommandHandler : IRequestHandler<RegisterCommand, string>
 
     var result = await _userManager.CreateAsync(user, request.Password);
 
+    if (await _userManager.IsInRoleAsync(user, request.Role))
+    {
+      await _userManager.AddToRoleAsync(user, request.Role);
+    }
     if (!result.Succeeded)
     {
       throw new Exception(string.Join(", ", result.Errors.Select(e => e.Description)));

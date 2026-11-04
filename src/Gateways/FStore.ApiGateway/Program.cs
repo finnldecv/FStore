@@ -43,7 +43,6 @@ builder.Services.AddCors(options =>
 var app = builder.Build();
 
 app.UseCors("Frontend");
-
+app.UseAuthentication();
+app.UseAuthorization();
 app.MapReverseProxy();
-
-app.Run();

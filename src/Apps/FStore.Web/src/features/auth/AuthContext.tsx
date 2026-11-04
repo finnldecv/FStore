@@ -7,12 +7,14 @@ interface JwtPayload {
   email: string;
   name: string;
   exp: number;
+  role?: string | string[];
 }
 
 interface AuthContextType {
   token: string | null;
   userId: string | null;
   email: string | null;
+  isAdmin: boolean;
   login: (token: string) => void;
   logout: () => void;
 }
@@ -39,12 +41,17 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   let userId: string | null = null;
   let email: string | null = null;
+  let isAdmin = false;
 
   if (token) {
     try {
       const decoded = jwtDecode<JwtPayload>(token);
       userId = decoded.sub;
       email = decoded.email;
+
+      const roles = decoded.role ? (Array.isArray(decoded.role)) ? decoded.role : [decoded.role] : [];
+
+      isAdmin = roles.includes('Admin');
     } catch {
       // If token is malformed, these remain null
     }
@@ -61,7 +68,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ token, userId, email, login, logout }}>
+    <AuthContext.Provider value={{ token, userId, email, isAdmin, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

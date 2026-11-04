@@ -4,6 +4,7 @@ using FStore.Catalog.Application.Features.Products.Commands.DeleteProduct;
 using FStore.Catalog.Application.Features.Products.Commands.UpdateProduct;
 using FStore.Catalog.Application.Features.Products.Queries.GetProducts;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FStore.Catalog.Api.Controllers;
@@ -41,6 +42,7 @@ public class ProductsController : ControllerBase
   }
 
   [HttpPost]
+  [Authorize(Roles = "Admin")]
   public async Task<IActionResult> Create([FromBody] CreateProductCommand command)
   {
     var product = await _mediator.Send(command);
@@ -48,6 +50,7 @@ public class ProductsController : ControllerBase
     return CreatedAtAction(nameof(GetById), new { id = product.Id }, product);
   }
   [HttpPut("{id:guid}")]
+  [Authorize(Roles = "Admin")]
   public async Task<IActionResult> Update(Guid id, [FromBody] UpdateProductCommand command)
   {
     if (id != command.Id) return BadRequest("Route id and body id do not match.");
@@ -56,6 +59,7 @@ public class ProductsController : ControllerBase
   }
 
   [HttpDelete("{id:guid}")]
+  [Authorize(Roles = "Admin")]
   public async Task<IActionResult> Delete(Guid id)
   {
     var deleted = await _mediator.Send(new DeleteProductCommand(id));
