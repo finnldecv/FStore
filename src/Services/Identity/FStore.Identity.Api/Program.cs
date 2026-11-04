@@ -44,6 +44,14 @@ using (var scope = app.Services.CreateScope())
 
   var adminEmail = builder.Configuration["AdminSetting:Password"];
   var adminPassword = builder.Configuration["AdminSetting:Password"];
+
+  if (!app.Environment.IsEnvironment("Testing"))
+  {
+    {
+      if (string.IsNullOrEmpty(adminEmail)) adminEmail = "admin@fstore.com";
+      if (string.IsNullOrEmpty(adminPassword)) adminPassword = "Admin123!";
+    }
+  }
   var adminUser = await userManager.FindByEmailAsync(adminEmail!);
   if (adminUser == null)
   {
@@ -51,6 +59,8 @@ using (var scope = app.Services.CreateScope())
     await userManager.CreateAsync(newAdmin, adminPassword!);
     await userManager.AddToRoleAsync(newAdmin, "Admin");
   }
+
+
 
   // Configure the HTTP request pipeline.
   if (app.Environment.IsDevelopment())
