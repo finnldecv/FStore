@@ -10,6 +10,7 @@ import { OrderDetailPage } from './features/order/OrderDetailPage';
 import { LoginPage } from './features/auth/LoginPage';
 import { RegisterPage } from './features/auth/RegisterPage';
 import { AdminProductListPage } from './features/admin/AdminProductListPage';
+import { ProductFormPage } from './features/admin/ProductFormPage';
 
 function App() {
   return (
@@ -25,6 +26,8 @@ function App() {
         <Route path="/register" element={<RegisterPage />}></Route>
         <Route path="/login" element={<LoginPage />}></Route>
         <Route path="/admin/products" element={<AdminProductListPage />}></Route>
+        <Route path="/admin/products/create" element={<ProductFormPage />}></Route>\
+        <Route path="/admin/products/edit/:id" element={<ProductFormPage />}></Route>
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Layout>
