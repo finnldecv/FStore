@@ -98,11 +98,3 @@ npm run test
 *   **Why YARP over Ocelot?** YARP is Microsoft's modern, high-performance reverse proxy built on .NET, offering better performance and easier configuration than the legacy Ocelot.
 *   **Why CQRS and MediatR?** To keep read and write logic strictly separated, ensuring that complex business rules don't bleed into query logic, and allowing for a clean vertical slice architecture.
 *   **Why a Choreography Saga?** To avoid a single point of failure (Orchestrator). Each service reacts to events independently, ensuring the system remains highly available and loosely coupled.
-
----
-
-### Next Steps to Make it Legendary:
-1. **Screenshots:** Take screenshots of your React UI (Storefront, Cart, Admin Dashboard) and save them in a `docs/images` folder. Add them to the README like this:
-   `![Storefront](docs/images/storefront.png)`
-2. **Add a Demo Link:** Once you deploy to your VPS, put the live URL at the very top next to the project name.
-3. **Seed the Data:** Make sure `docker compose up -d --build` on a fresh machine automatically seeds the database (as instructed in the previous step) so the reviewer doesn't see a blank storefront when they test it.
