@@ -32,6 +32,12 @@
     <Project Path="src/Services/Order/FStore.Order.Domain/FStore.Order.Domain.csproj" />
     <Project Path="src/Services/Order/FStore.Order.Infrastructure/FStore.Order.Infrastructure.csproj" />
   </Folder>
+  <Folder Name="/src/Services/Payment/">
+    <Project Path="src/Services/Payment/FStore.Payment.Api/FStore.Payment.Api.csproj" />
+    <Project Path="src/Services/Payment/FStore.Payment.Application/FStore.Payment.Application.csproj" />
+    <Project Path="src/Services/Payment/FStore.Payment.Domain/FStore.Payment.Domain.csproj" />
+    <Project Path="src/Services/Payment/FStore.Payment.Infrastructure/FStore.Payment.Infrastructure.csproj" />
+  </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/FStore.Basket.IntegrationTests/FStore.Basket.IntegrationTests.csproj" />
     <Project Path="tests/FStore.Basket.UnitTests/FStore.Basket.UnitTests.csproj" />

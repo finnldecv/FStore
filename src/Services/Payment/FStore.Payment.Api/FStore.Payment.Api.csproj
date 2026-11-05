@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FStore.Payment.Application\FStore.Payment.Application.csproj" />
+    <ProjectReference Include="..\FStore.Payment.Infrastructure\FStore.Payment.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\..\BuildingBlocks\FStore.Common\FStore.Common.csproj" />
+  </ItemGroup>
+
+</Project>

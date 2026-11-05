@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\FStore.Payment.Domain\FStore.Payment.Domain.csproj" />
+    <ProjectReference Include="..\FStore.Payment.Infrastructure\FStore.Payment.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\..\BuildingBlocks\FStore.EventBus\FStore.EventBus.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>
