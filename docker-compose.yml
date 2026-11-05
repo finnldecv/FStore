@@ -114,7 +114,20 @@ services:
     depends_on:
       catalogdb:
         condition: service_healthy
-
+  payment-api:
+    build:
+      context: .
+      dockerfile: src/Services/Payment/FStore.Payment.Api/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:8080
+      ConnectionStrings__PaymentDb: "Server=catalogdb,1433;Database=FStore_Payment;User Id=sa;Password=${SQL_SA_PASSWORD};TrustServerCertificate=True;"
+      ConnectionStrings__RabbitMq: "amqp://${RABBITMQ_USER}:${RABBITMQ_PASS}@rabbitmq:5672"
+    depends_on:
+      catalogdb:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
   apigateway:
     build:
       context: .

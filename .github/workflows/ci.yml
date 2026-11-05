@@ -175,6 +175,19 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
+      - name: Build Payment API image
+        if: github.ref == 'refs/heads/master'
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: src/Services/Payment/FStore.Payment.Api/Dockerfile
+          push: true
+          tags: |
+            ghcr.io/finnldecv/fstore-payment-api:${{ github.sha }}
+            ghcr.io/finnldecv/fstore-payment-api:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
       - name: Build ApiGateway image
         if: github.ref == 'refs/heads/master'
         uses: docker/build-push-action@v6

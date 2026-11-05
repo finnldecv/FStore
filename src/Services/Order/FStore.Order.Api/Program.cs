@@ -21,6 +21,7 @@ builder.Services.AddMassTransit(x =>
 {
   x.AddConsumer<BasketCheckoutConsumer>();
   x.AddConsumer<StockReservationFailedConsumer>();
+  x.AddConsumer<PaymentProcessedConsumer>();
 
   if (builder.Environment.IsEnvironment("Testing"))
   {
