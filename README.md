@@ -31,17 +31,12 @@ graph TD
 
 Backend Services
 
-    API Gateway (YARP): Single entry point, routing, JWT validation, and CORS handling.
-
-    Identity Service: Handles user registration, login, and issues JWT tokens with Role-Based Access Control (Admin/Customer).
-
-    Catalog Service: Manages products and categories, supporting pagination, filtering, and search (SQL Server).
-
-    Basket Service: Manages user shopping carts with high-speed caching (Redis).
-
-    Order Service: Orchestrates the checkout Saga, manages order state machines, and handles compensations (SQL Server).
-
-    Payment Service: Mocks a payment gateway, processing transactions and handling declines via the event bus (SQL Server).
+* **API Gateway (YARP):** Single entry point, routing, JWT validation, and CORS handling.
+* **Identity Service:** Handles user registration, login, and issues JWT tokens with Role-Based Access Control.
+* **Catalog Service:** Manages products and categories, supporting pagination, filtering, and search.
+* **Basket Service:** Manages user shopping carts with high-speed caching (Redis).
+* **Order Service:** Orchestrates the checkout Saga, manages order state machines, and handles compensations.
+* **Payment Service:** Mocks a payment gateway, processing transactions and handling declines via the event bus.
 
 Core Patterns & Technologies
 
