@@ -29,7 +29,7 @@ graph TD
     PAY -->|SQL Server| DB4[(Payment DB)]
 ```
 
-Backend Services
+### Backend Services
 
 * **API Gateway (YARP):** Single entry point, routing, JWT validation, and CORS handling.
 * **Identity Service:** Handles user registration, login, and issues JWT tokens with Role-Based Access Control.
@@ -38,76 +38,66 @@ Backend Services
 * **Order Service:** Orchestrates the checkout Saga, manages order state machines, and handles compensations.
 * **Payment Service:** Mocks a payment gateway, processing transactions and handling declines via the event bus.
 
-Core Patterns & Technologies
+### Core Patterns & Technologies
 
-    Architecture: Clean Architecture, CQRS (MediatR), Vertical Slice (Feature folders).
+*   **Architecture:** Clean Architecture, CQRS (MediatR), Vertical Slice (Feature folders).
+*   **Messaging:** RabbitMQ with MassTransit (Choreography Saga, Compensating Transactions).
+*   **Testing:** xUnit, Testcontainers (real DBs in Docker for integration tests), Respawn, NSubstitute.
+*   **DevOps:** Fully containerized (Docker Compose), CI/CD via GitHub Actions.
 
-    Messaging: RabbitMQ with MassTransit (Choreography Saga, Compensating Transactions).
-
-    Testing: xUnit, Testcontainers (real DBs in Docker for integration tests), Respawn, NSubstitute.
-
-    DevOps: Fully containerized (Docker Compose), CI/CD via GitHub Actions.
-
-🔄 The Event-Driven Checkout Flow
+## 🔄 The Event-Driven Checkout Flow
 
 When a user places an order, the system executes a distributed transaction across multiple microservices:
 
-    Basket API clears the cart and publishes a BasketCheckoutEvent.
+1. **Basket API** clears the cart and publishes a `BasketCheckoutEvent`.
+2. **Order API** consumes the event, creates a `Pending` Order, and publishes `OrderCreatedEvent`.
+3. **Order API** (internally) reserves stock and publishes `OrderConfirmedEvent`.
+4. **Payment API** consumes `OrderConfirmedEvent`, processes the mock payment, and publishes `PaymentProcessedEvent`.
+5. **Order API** consumes the payment result:
+    *   If successful, the Order status becomes `Confirmed`.
+    *   If declined, the Order is `Cancelled`, and compensating events are fired to restore the user's cart.
 
-    Order API consumes the event, creates a Pending Order, and publishes OrderCreatedEvent.
+## 🚀 Quick Start (Run Locally)
 
-    Order API (internally) reserves stock and publishes OrderConfirmedEvent.
+You only need **Docker Desktop** installed.
 
-    Payment API consumes OrderConfirmedEvent, processes the mock payment, and publishes PaymentProcessedEvent.
-
-    Order API consumes the payment result:
-
-        If successful, the Order status becomes Confirmed.
-
-        If declined, the Order is Cancelled, and compensating events are fired to restore the user's cart.
-
-🚀 Quick Start (Run Locally)
-
-You only need Docker Desktop installed.
-
+```bash
 git clone https://github.com/finnldecv/FStore.git
 cd FStore
 docker compose up -d --build
+```
 
-Accessing the Application
+### Accessing the Application
 
-    Storefront: http://localhost:5173
+*   **Storefront:** [http://localhost:5173](http://localhost:5173)
+*   **API Gateway (Swagger):** [http://localhost:5000/swagger](http://localhost:5000/swagger)
+*   **RabbitMQ Management:** [http://localhost:15672](http://localhost:15672) (guest / guest)
 
-    API Gateway (Swagger): http://localhost:5000/swagger
-
-    RabbitMQ Management: http://localhost:15672 (guest / guest)
-
-Default Admin Credentials
+### Default Admin Credentials
 
 To test the admin dashboard and product management:
 
-    Email: admin@fstore.com
+*   **Email:** `admin@fstore.com`
+*   **Password:** `Admin123!`
 
-    Password: Admin123!
+## 🧪 Testing
 
-🧪 Testing
+The solution features comprehensive unit and integration test suites. Integration tests use **Testcontainers** to spin up real SQL Server and Redis instances during the test run.
 
-The solution features comprehensive unit and integration test suites. Integration tests use Testcontainers to spin up real SQL Server and Redis instances during the test run.
-
+```bash
 # Run all backend tests
 dotnet test FStore.sln
 
 # Run frontend tests
 cd src/Apps/FStore.Web
 npm run test
+```
 
-🛠️ Technical Decisions
+## 🛠️ Technical Decisions
 
-    Why YARP over Ocelot? YARP is Microsoft's modern, high-performance reverse proxy built on .NET, offering better performance and easier configuration than the legacy Ocelot.
-
-    Why CQRS and MediatR? To keep read and write logic strictly separated, ensuring that complex business rules don't bleed into query logic, and allowing for a clean vertical slice architecture.
-
-    Why a Choreography Saga? To avoid a single point of failure (Orchestrator). Each service reacts to events independently, ensuring the system remains highly available and loosely coupled.
+*   **Why YARP over Ocelot?** YARP is Microsoft's modern, high-performance reverse proxy built on .NET, offering better performance and easier configuration than the legacy Ocelot.
+*   **Why CQRS and MediatR?** To keep read and write logic strictly separated, ensuring that complex business rules don't bleed into query logic, and allowing for a clean vertical slice architecture.
+*   **Why a Choreography Saga?** To avoid a single point of failure (Orchestrator). Each service reacts to events independently, ensuring the system remains highly available and loosely coupled.
 
 ---
 
