@@ -27,7 +27,7 @@ graph TD
     ORD <-->|Consume/Publish| MQ
     PAY[Payment API] <-->|Consume/Publish| MQ
     PAY -->|SQL Server| DB4[(Payment DB)]
-```mermaid
+```
 
 Backend Services
 
