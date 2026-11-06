@@ -70,7 +70,7 @@ docker compose up -d --build
 ### Accessing the Application
 
 *   **Storefront:** [http://localhost:5173](http://localhost:5173)
-*   **API Gateway (Swagger):** [http://localhost:5000/swagger](http://localhost:5000/swagger)
+*   **API Gateway (OpenAPI):** [http://localhost:5000/openapi](http://localhost:5000/openapi)
 *   **RabbitMQ Management:** [http://localhost:15672](http://localhost:15672) (guest / guest)
 
 ### Default Admin Credentials
@@ -86,7 +86,7 @@ The solution features comprehensive unit and integration test suites. Integratio
 
 ```bash
 # Run all backend tests
-dotnet test FStore.sln
+dotnet test FStore.slnx
 
 # Run frontend tests
 cd src/Apps/FStore.Web
