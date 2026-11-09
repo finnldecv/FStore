@@ -1,5 +1,6 @@
 using FStore.Identity.Infrastructure.Data;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
@@ -22,6 +23,17 @@ public class IdentityApiFactory : WebApplicationFactory<Program>, IAsyncLifetime
   public async Task InitializeAsync()
   {
     await _dbContainer.StartAsync();
+    _ = CreateClient();
+
+    // Seed the Roles
+    using var scope = Services.CreateScope();
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+    if (!await roleManager.RoleExistsAsync("Customer"))
+      await roleManager.CreateAsync(new IdentityRole("Customer"));
+
+    if (!await roleManager.RoleExistsAsync("Admin"))
+      await roleManager.CreateAsync(new IdentityRole("Admin"));
   }
 
   async Task IAsyncLifetime.DisposeAsync()
