@@ -25,7 +25,6 @@ public class IdentityApiFactory : WebApplicationFactory<Program>, IAsyncLifetime
     await _dbContainer.StartAsync();
     _ = CreateClient();
 
-    // Seed the Roles
     using var scope = Services.CreateScope();
     var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
@@ -77,7 +76,7 @@ public class IdentityApiFactory : WebApplicationFactory<Program>, IAsyncLifetime
       _respawner = await Respawner.CreateAsync(conn, new RespawnerOptions
       {
         DbAdapter = DbAdapter.SqlServer,
-        TablesToIgnore = new Table[] { "__EFMigrationsHistory" }
+        TablesToIgnore = new Table[] { "__EFMigrationsHistory", "AspNetRoles" }
       });
     }
 
