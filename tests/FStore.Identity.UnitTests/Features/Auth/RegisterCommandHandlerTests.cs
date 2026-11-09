@@ -17,6 +17,12 @@ public class RegisterCommandHandlerTests
 
     userManager.CreateAsync(Arg.Any<ApplicationUser>(), Arg.Any<string>()).Returns(IdentityResult.Success);
 
+    userManager.IsInRoleAsync(Arg.Any<ApplicationUser>(), Arg.Any<string>())
+            .Returns(false);
+
+    userManager.AddToRoleAsync(Arg.Any<ApplicationUser>(), Arg.Any<string>())
+        .Returns(IdentityResult.Success);
+        
     var handler = new RegisterCommandHandler(userManager);
     var command = new RegisterCommand("test@test.com", "Password123!", "John", "Cena");
 
