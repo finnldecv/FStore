@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using FStore.Common.Middleware;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.DataProtection;
+using FStore.Identity.Domain.Constants;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,10 +38,19 @@ using (var scope = app.Services.CreateScope())
   var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
   var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
 
-  if (!await roleManager.RoleExistsAsync("Admin"))
-    await roleManager.CreateAsync(new IdentityRole("Admin"));
-  if (!await roleManager.RoleExistsAsync("Customer"))
-    await roleManager.CreateAsync(new IdentityRole("Customer"));
+  var roles = new[]
+  {
+    UserRoles.Customer,
+    UserRoles.Admin
+  };
+
+  foreach (var role in roles)
+  {
+    if (!await roleManager.RoleExistsAsync(role))
+    {
+      await roleManager.CreateAsync(new IdentityRole(role));
+    }
+  }
 
   var adminEmail = builder.Configuration["AdminSettings:Email"];
   var adminPassword = builder.Configuration["AdminSettings:Password"];
@@ -57,7 +67,7 @@ using (var scope = app.Services.CreateScope())
   {
     var newAdmin = new ApplicationUser { UserName = adminEmail, Email = adminEmail, FirstName = "System", LastName = "Admin" };
     await userManager.CreateAsync(newAdmin, adminPassword!);
-    await userManager.AddToRoleAsync(newAdmin, "Admin");
+    await userManager.AddToRoleAsync(newAdmin, UserRoles.Admin);
   }
 
 
