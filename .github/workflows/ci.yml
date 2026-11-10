@@ -82,6 +82,8 @@ jobs:
           --no-build --configuration Release --verbosity normal
 
       - name: Run Identity integration tests
+        env:
+          JwtSettings__SigningKeyBase64: ${{ secrets.JWT_SIGNING_KEY }}
         run: >
           dotnet test tests/FStore.Identity.IntegrationTests/FStore.Identity.IntegrationTests.csproj
           --no-build --configuration Release --verbosity normal

@@ -49,7 +49,7 @@ public class IdentityApiFactory : WebApplicationFactory<Program>, IAsyncLifetime
     {
       config.AddInMemoryCollection(new Dictionary<string, string?>
         {
-            {"JwtSettings:Key", "super_secret_key_that_is_at_least_32_characters_long!"},
+            {"JwtSettings:Key", "pqyMgYn7rhlp7PEBLzgPLX9/z5QA7NMZezUMoKkYEtI="},
             {"JwtSettings:Issuer", "FStore.Identity"},
             {"JwtSettings:Audience", "FStore.Client"},
             {"AdminSettings:Email", "admin@test.com"},
