@@ -28,7 +28,13 @@ public class LoginCommandHandlerTests
 
     _userManager.FindByEmailAsync("test@test.com").Returns(user);
     _userManager.CheckPasswordAsync(user, "Password123!").Returns(true);
-    _tokenService.GenerateToken(user).Returns("fake-jwt-token");
+    _userManager.GetRolesAsync(user).Returns(new List<string> { "Customer" });
+    _tokenService.GenerateToken(
+        Arg.Any<string>(),
+        Arg.Any<string>(),
+        Arg.Any<string>(),
+        Arg.Any<IList<string>>()
+    ).Returns("fake-jwt-token");
 
     var result = await _handler.Handle(new LoginCommand("test@test.com", "Password123!"), CancellationToken.None);
 
