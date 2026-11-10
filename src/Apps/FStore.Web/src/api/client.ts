@@ -19,11 +19,26 @@ http.interceptors.response.use(
     if (error.response?.status === 401) {
       localStorage.removeItem('token');
       window.location.href = '/login';
+      return Promise.reject(error);
     }
 
-    if (error.response?.status !== 404) {
-      console.error('[API Error]', error.response?.data || error.message);
+    if (error.response?.status === 404) {
+      return Promise.reject(error);
     }
+
+    const message =
+      error.response?.data?.error ||
+      error.response?.data?.title ||
+      error.message ||
+      'Something went wrong';
+
+    console.error('[API Error]', {
+      url: error.config?.url,
+      method: error.config?.method,
+      status: error.response?.status,
+      message,
+    });
+
     return Promise.reject(error);
   }
 );
