@@ -7,19 +7,63 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddReverseProxy()
     .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"));
 
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+var jwtKey = builder.Configuration["JwtSettings:Key"];
+
+if (string.IsNullOrWhiteSpace(jwtKey))
+{
+  throw new InvalidOperationException(
+      "JWT configuration missing: JwtSettings:Key"
+  );
+}
+
+byte[] keyBytes;
+
+try
+{
+  keyBytes = Convert.FromBase64String(jwtKey);
+}
+catch (FormatException)
+{
+  throw new InvalidOperationException(
+      "JwtSettings:Key must be a valid Base64 string."
+  );
+}
+
+if (keyBytes.Length < 32)
+{
+  throw new InvalidOperationException(
+      "JWT signing key must contain at least 32 bytes."
+  );
+}
+
+builder.Services
+    .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
-      options.TokenValidationParameters = new TokenValidationParameters
-      {
-        ValidateIssuer = true,
-        ValidateAudience = true,
-        ValidateLifetime = true,
-        ValidateIssuerSigningKey = true,
-        ValidIssuer = builder.Configuration["JwtSettings:Issuer"],
-        ValidAudience = builder.Configuration["JwtSettings:Audience"],
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JwtSettings:Key"]!))
-      };
+      options.MapInboundClaims = false;
+
+      options.TokenValidationParameters =
+          new TokenValidationParameters
+          {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+
+            ValidIssuer =
+                  builder.Configuration["JwtSettings:Issuer"],
+
+            ValidAudience =
+                  builder.Configuration["JwtSettings:Audience"],
+
+            IssuerSigningKey =
+                  new SymmetricSecurityKey(keyBytes),
+
+            NameClaimType = "name",
+            RoleClaimType = "role",
+
+            ClockSkew = TimeSpan.FromSeconds(30)
+          };
     });
 
 builder.Services.AddAuthorization();
