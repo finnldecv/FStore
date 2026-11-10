@@ -18,11 +18,19 @@ public class LoginCommandHandler : IRequestHandler<LoginCommand, string>
   public async Task<string> Handle(LoginCommand request, CancellationToken cancellationToken)
   {
     var user = await _userManager.FindByEmailAsync(request.Email);
+
     if (user is null || !await _userManager.CheckPasswordAsync(user, request.Password))
     {
       throw new Exception("Invalid email or password");
     }
 
-    return await _tokenService.GenerateToken(user);
+    var roles = await _userManager.GetRolesAsync(user);
+    var token = await _tokenService.GenerateToken(
+      user.Id.ToString(),
+      user.Email!,
+      user.UserName!,
+      roles
+    );
+    return token;
   }
 }

@@ -5,43 +5,63 @@ using FStore.Identity.Application.Services;
 using FStore.Identity.Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
 namespace FStore.Identity.Infrastructure.Services;
 
 public class TokenService : ITokenService
 {
-  private readonly IConfiguration _config;
-  private readonly UserManager<ApplicationUser> _userManager;
+  private readonly JwtOptions _options;
 
-  public TokenService(IConfiguration config, UserManager<ApplicationUser> userManager)
+  public TokenService(IOptions<JwtOptions> options)
   {
-    _config = config;
-    _userManager = userManager;
+    _options = options.Value;
   }
-  public async Task<string> GenerateToken(ApplicationUser user)
+  public async Task<string> GenerateToken(string userId, string email, string name, IList<string> roles)
   {
-    var userRoles = await _userManager.GetRolesAsync(user);
+    var now = DateTime.UtcNow;
     var claims = new List<Claim>
     {
-      new Claim(JwtRegisteredClaimNames.Sub, user.Id),
-      new Claim(JwtRegisteredClaimNames.Email, user.Email!),
-      new Claim(ClaimTypes.Name, user.UserName!)
+      new Claim(JwtRegisteredClaimNames.Sub, userId),
+      new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString("N")),
+      new("name", name ?? email ?? userId),
+      new(
+        JwtRegisteredClaimNames.Iat,
+        EpochTime.GetIntDate(DateTime.UtcNow).ToString(),
+        ClaimValueTypes.Integer64
+      ),
     };
 
-    foreach (var role in userRoles)
+    if (!string.IsNullOrWhiteSpace(email))
     {
-      claims.Add(new Claim(ClaimTypes.Role, role));
+      claims.Add(new Claim(JwtRegisteredClaimNames.Email, email!));
+
     }
 
-    var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JwtSettings:Key"]!));
+    var roleClaims = roles
+            .Where(role => !string.IsNullOrWhiteSpace(role))
+            .Distinct(StringComparer.OrdinalIgnoreCase)
+            .Select(role => new Claim("role", role));
+
+    claims.AddRange(roleClaims);
+
+    var keyBytes = Convert.FromBase64String(_options.Key);
+
+    if (keyBytes.Length < 32)
+    {
+      throw new InvalidOperationException("JWT signing key must contain at least 32 bytes.");
+    }
+
+    var key = new SymmetricSecurityKey(keyBytes);
     var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
     var token = new JwtSecurityToken(
-      issuer: _config["JwtSettings:Issuer"],
-      audience: _config["JwtSettings:Audience"],
+      issuer: _options.Issuer,
+      audience: _options.Audience,
       claims: claims,
-      expires: DateTime.UtcNow.AddHours(1),
+      notBefore: now,
+      expires: now.AddMinutes(_options.AccessTokenMinutes),
       signingCredentials: creds
     );
 

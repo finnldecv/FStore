@@ -21,7 +21,39 @@ builder.Services.AddDataProtection()
 
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
-
+builder.Services
+    .AddOptions<JwtOptions>()
+    .BindConfiguration(JwtOptions.SectionName)
+    .Validate(
+        options => !string.IsNullOrWhiteSpace(options.Issuer),
+        "JWT issuer is required."
+    )
+    .Validate(
+        options => !string.IsNullOrWhiteSpace(options.Audience),
+        "JWT audience is required."
+    )
+    .Validate(
+        options => options.AccessTokenMinutes > 0,
+        "JWT expiration must be positive."
+    )
+    .Validate(
+        options =>
+        {
+          try
+          {
+            return Convert.FromBase64String(
+                options.Key
+            ).Length >= 32;
+          }
+          catch
+          {
+            return false;
+          }
+        },
+        "JWT signing key must be valid Base64 and contain at least 32 bytes."
+    )
+    .ValidateOnStart();
+    
 builder.Services.AddIdentityCore<ApplicationUser>()
   .AddRoles<IdentityRole>()
   .AddEntityFrameworkStores<IdentityDbContext>()
